@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="night_mode_entries">
+        <item>Enabled</item>
+        <item>Disabled</item>
+        <item>System Default</item>
+    </string-array>
+
+    <string-array name="night_mode_values">
+        <item>@string/dark_mode_enabled</item>
+        <item>@string/dark_mode_disabled</item>
+        <item>@string/dark_mode_system</item>
+    </string-array>
+
+    <string-array name="notification_options_text">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+    </string-array>
+
+    <string-array name="notification_options_values">
+        <item>morning</item>
+        <item>afternoon</item>
+        <item>evening</item>
+    </string-array>
+
+    <bool name="notification_enabled_default">true</bool>
+    <string name="notification_options_value_default">morning</string>
+
+    <string-array name="item_pics_list">
+        <item>icons/note.png</item>
+        <item>icons/text.png</item>
+        <item>icons/contacts.png</item>
+        <item>icons/travel.png</item>
+        <item>icons/city.png</item>
+        <item>icons/shop.png</item>
+        <item>icons/food.png</item>
+        <item>icons/nature.png</item>
+        <item>icons/health.png</item>
+        <item>icons/house.png</item>
+        <item>icons/basketball.png</item>
+        <item>icons/school.png</item>
+        <item>icons/info.png</item>
+        <item>icons/check.png</item>
+        <item>icons/circle.png</item>
+        <item>icons/minus.png</item>
+        <item>icons/misc.png</item>
+        <item>icons/pine-tree.png</item>
+        <item>icons/calendar.png</item>
+        <item>icons/laptop.png</item>
+    </string-array>
+
+    <string-array name="set_status_mode">
+        <item>manual</item>
+        <item>auto</item>
+    </string-array>
+
+    <string-array name="set_status_mode_values">
+        <item>Manual</item>
+        <item>Auto</item>
+        <item>Auto (Overdue -> New)</item>
+    </string-array>
+
+    <string-array name="status_mode_titles">
+        <item>Manual</item>
+        <item>Auto</item>
+        <item>Auto (Overdue -> New)</item>
+    </string-array>
+
+    <string-array name="status_mode_desc">
+        <item>Status can be set only manually.</item>
+        <item>Status will be set to urgent if the task is overdue.</item>
+        <item>Status will be set to new if the task is overdue.</item>
+    </string-array>
+
+    <string-array name="repeat_status_mode_titles">
+        <item>Manual</item>
+        <item>Auto (Overdue -> Urgent)</item>
+        <item>Auto (Overdue -> New)</item>
+    </string-array>
+
+    <string-array name="repeat_status_mode_desc">
+        <item>Status can be set only manually.</item>
+        <item>Status will be defined depending on the time passed from the period start and set to urgent at the end of the period.</item>
+        <item>Status will be defined depending on the time passed from the period start and set to new if the task is overdue.</item>
+    </string-array>
+
+    <string-array name="set_completion_type_values">
+        <item>No date</item>
+        <item>Due Date</item>
+        <item>Repeat</item>
+    </string-array>
+
+    <string-array name="period_repeat_values">
+        <item>day(s)</item>
+        <item>week(s)</item>
+        <item>month(s)</item>
+        <item>year(s)</item>
+    </string-array>
+
+</resources>

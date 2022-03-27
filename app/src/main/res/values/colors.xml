@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="ic_launcher_app_background">#FFFFFF</color>
+
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#53C5F8</color>
+    <color name="primaryLightColor">#66CEFD</color>
+    <color name="primaryDarkColor">#2DAFEA</color>
+    <!-- accents-->
+    <color name="secondaryColor">#00B0FF</color>
+    <color name="secondaryLightColor">#3ABFFA</color>
+    <color name="secondaryDarkColor">#039CE1</color>
+
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondaryTextColor">#FFFFFF</color>
+
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorBackground">#F8F8F8</color>
+    <color name="colorSearchBackground">#FaFaFa</color>
+
+    <color name="colorText">#444</color>
+    <color name="colorTextDisabled">#7A444444</color>
+
+    <color name="colorOnSurface">#111</color>
+    <color name="colorOnBackground">@color/colorOnSurface</color>
+
+    <color name="colorError">#FF3B2D</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+    <color name="light_status_bar">#ECECEC</color>
+    <color name="splash_color">#fff</color>
+
+
+    <color name="status_gray">#E8C5C5C5</color>
+    <color name="status_red">#FD3829</color>
+    <color name="status_yellow">#FDE40A</color>
+    <color name="status_blue">#2ABCFD</color>
+    <color name="status_green">#F00FD617</color>
+
+    <color name="status_dark_check">#9A171717</color>
+
+    <color name="inactive_tab_btn">#080C0C0C</color>
+    <color name="active_tab_btn">#00000000</color>
+
+
+</resources>

@@ -1,0 +1,63 @@
+package com.muralex.achiever.presentation.fragments.contacts
+
+import android.content.ActivityNotFoundException
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.widget.Toast
+import androidx.core.app.ShareCompat
+import com.muralex.achiever.R
+import dagger.hilt.android.qualifiers.ActivityContext
+import javax.inject.Inject
+
+
+class ContactActions @Inject constructor(
+  @ActivityContext  private val context: Context
+) {
+
+    fun sendFeedback() = sendEmail()
+
+    fun sendReport() = sendEmail()
+
+    fun rateApp() {
+        goToPlayStore("")
+    }
+
+    fun shareApp() {
+        ShareCompat.IntentBuilder(context)
+            .setType("text/plain")
+            .setChooserTitle(context.getString(R.string.text_share))
+            .setText(context.getString(R.string.text_share_app))
+            .startChooser()
+    }
+
+    private fun sendEmail() {
+        val i = Intent(Intent.ACTION_SENDTO)
+        val mailto = "mailto:" + "" +
+                "?subject=" + Uri.encode("") +
+                "&body=" + Uri.encode("")
+        i.data = Uri.parse(mailto)
+        try {
+            context.startActivity(Intent.createChooser(i, ""))
+        } catch (ex: ActivityNotFoundException) {
+            Toast.makeText(context, "No mail client", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun goToPlayStore(pack: String) {
+        val uri = Uri.parse("market://details?id=$pack")
+        val goToMarket = Intent(Intent.ACTION_VIEW, uri)
+
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+        try {
+            context.startActivity(goToMarket)
+        } catch (e: ActivityNotFoundException) {
+            context.startActivity(Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=$pack")))
+        }
+    }
+
+
+}
