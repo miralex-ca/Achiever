@@ -26,7 +26,6 @@ class NavigationTest : BaseUITest() {
         waitTime(2500)
     }
 
-
     private fun navigateFromDrawer(direction: Int) {
         waitTime(500)
 

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muralex.achiever.R
 import com.muralex.achiever.notifications.AlarmScheduler.checkAlarmsScheduleFromSettings
 import com.muralex.achiever.notifications.AlarmScheduler.enableAlarmNotificationFromSettings
-import com.muralex.achiever.presentation.components.ThemeHelper
+import com.muralex.achiever.presentation.utils.ThemeHelper
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

@@ -11,7 +11,7 @@ import com.muralex.achiever.notifications.NotificationHelper.NOTIFICATION_CHANNE
 import com.muralex.achiever.notifications.NotificationHelper.NOTIFICATION_CHANNEL_NAME
 import com.muralex.achiever.BuildConfig
 import com.muralex.achiever.R
-import com.muralex.achiever.presentation.components.ThemeHelper
+import com.muralex.achiever.presentation.utils.ThemeHelper
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 

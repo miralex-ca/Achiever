@@ -29,7 +29,7 @@
     <string name="notification_options_value_default">morning</string>
 
     <string-array name="item_pics_list">
-        <item>icons/note.png</item>
+        <item>icons/list.png</item>
         <item>icons/text.png</item>
         <item>icons/contacts.png</item>
         <item>icons/travel.png</item>

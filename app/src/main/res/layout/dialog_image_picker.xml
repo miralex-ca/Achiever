@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout
+            android:id="@+id/ll_buttons"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:weightSum="1"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tab_icons"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:icon="@drawable/ic_tab_icon"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="50dp"
+                android:textAllCaps="false"
+                android:text="Icons"
+                android:textColor="?colorTextPrimary"
+                android:textSize="14sp"
+                app:iconTint="?colorTextPrimary"
+                app:rippleColor="#3EAAA9A9"
+                android:layout_margin="0dp"
+                app:cornerRadius="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="40dp"
+                />
+            <com.google.android.material.button.MaterialButton
+                app:setTabButtonActive = "@{false}"
+                android:id="@+id/tab_images"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:icon="@drawable/ic_tab_image"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="50dp"
+                android:textAllCaps="false"
+                android:alpha="0.9"
+                android:text="Images"
+
+                app:backgroundTint ="#14050505"
+                android:textColor="?colorTextPrimary"
+                android:textSize="14sp"
+                app:iconTint="?colorTextPrimary"
+                app:rippleColor="#3EAAA9A9"
+                android:layout_margin="0dp"
+                app:cornerRadius="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="40dp"
+                />
+
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/icons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHeight_max="300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:paddingTop="3dp"
+                android:paddingBottom="30dp"
+                android:clipToPadding="false"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:id="@+id/images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="320dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="30dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_image_url"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Image URL"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tid_image_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:paddingStart="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp"
+                    android:maxLines="4"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btn_save_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save URL" />
+
+
+            <TextView
+                android:layout_marginTop="30dp"
+                android:text="Find and image on Pixabay.com"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search" />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</layout>

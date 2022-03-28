@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.muralex.achiever">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:name=".presentation.App"
@@ -43,6 +45,12 @@
             android:name=".presentation.activities.search.SearchActivity"
             android:theme="@style/Search"
             android:exported="false" />
+
+        <activity
+            android:name=".presentation.activities.search_images.SearchImageActivity"
+            android:theme="@style/Search"
+            android:exported="false" />
+
 
     </application>
 

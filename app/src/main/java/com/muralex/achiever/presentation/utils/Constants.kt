@@ -13,14 +13,14 @@ object Constants {
     const val CHANNEL_ID = "com.example.tasker.channel"
     const val WORK_TAG = "tag"
 
-    const val IMAGES_FOLDER_ICONS = "file:///android_asset/images/"
+    const val IMAGES_FOLDER_ICONS = "file:///android_asset/"
 
-    val SAMPLE_IMAGE = IMAGES_FOLDER_ICONS + "icons/text.png"
+    val SAMPLE_IMAGE = IMAGES_FOLDER_ICONS + "icons/list.png"
 
     const val DATA_FILENAME = "file_name"
 
-    const val ITEM_TITLE_LIMIT = 70
-    const val ITEM_TEXT_LIMIT = 1000
+    const val GROUP_TITLE_LIMIT = 60
+    const val GROUP_DESC_LIMIT = 100
 
     const val GROUP_DETAIL_ITEM_ID = "group_detail"
 
@@ -52,7 +52,8 @@ object Constants {
         TodoStatus,
         Pin,
         Unpin,
-        OpenGroup
+        OpenGroup,
+        MenuClick
     }
 
     val ITEM_STATUS = listOf (
