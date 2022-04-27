@@ -17,8 +17,7 @@ import com.muralex.achiever.data.models.usemodels.SearchItem
 import com.muralex.achiever.databinding.ActivitySearchImageBinding
 import com.muralex.achiever.presentation.activities.search_images.SearchImageViewModel.Companion.PAGE_SIZE
 import com.muralex.achiever.presentation.fragments.group_edit.GroupEditViewModel
-import com.muralex.achiever.presentation.utils.Status
-import com.muralex.achiever.presentation.utils.safeSlice
+import com.muralex.achiever.presentation.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -38,6 +37,7 @@ class SearchImageActivity : AppCompatActivity() {
     private var isLoading = false
 
     var job: Job? = null
+    var progressJob: Job? = null
 
     private lateinit var allDataList: List<SearchItem>
 
@@ -94,33 +94,69 @@ class SearchImageActivity : AppCompatActivity() {
 
     private fun handleSearch(query: String) {
 
+        binding.searchProgress.show()
+        binding.initListHint.displayIf(query.trim().isEmpty())
+
+        binding.emptyListHint.displayIf(query.trim().isNotEmpty())
+
+        if (query.trim().isNotEmpty()) binding.searchEmptyList.gone()
+
         job?.cancel()
         job = lifecycleScope.launch {
+
             delay(600)
+
+            binding.searchQueryHint.text = query
             if (query.isNotEmpty()) {
                 viewModel.searchForImage(query)
+
+
+            } else {
+                progressJob?.cancel()
+                progressJob =  lifecycleScope.launch {
+
+                    delay(200)
+                    binding.searchProgress.hide()
+                }
             }
         }
     }
 
 
     private fun subscribeToObservers() {
+
         viewModel.imageList.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> {
+                    progressJob?.cancel()
+                    progressJob =  lifecycleScope.launch {
+                        delay(1400)
+                        binding.searchProgress.hide()
+                    }
                     val urls = it.data?.hits?.map { imageResult -> imageResult.previewURL }
                     listAdapter.images = urls ?: listOf()
-                    // .progressBar?.visibility = View.GONE
+                    binding.searchEmptyList.displayIf( urls.isNullOrEmpty())
+                    binding.checkNetwork.gone()
+
                 }
 
                 Status.ERROR -> {
-                    Toast.makeText(this, it.message ?: "Error", Toast.LENGTH_LONG)
+
+                    Toast.makeText(this, it.message ?: "Connection Error", Toast.LENGTH_LONG)
                         .show()
-                    //  .progressBar?.visibility = View.GONE
+
+                    binding.checkNetwork.visible()
+
+                    progressJob?.cancel()
+                    progressJob =  lifecycleScope.launch {
+                        delay(200)
+                        binding.searchProgress.hide()
+                    }
                 }
 
                 Status.LOADING -> {
-                  // .progressBar?.visibility = View.VISIBLE
+                    binding.checkNetwork.gone()
+                    binding.searchProgress.show()
                 }
             }
         }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:minHeight="200dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="44dp"
+        android:alpha="0.5"
+        android:id="@+id/image_home_empty"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:srcCompat="@drawable/ic_list_empty_pic" />
+
+    <TextView
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="This list is empty.\nTap + to create a new task"
+        android:id="@+id/tv_empty_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="8dp"
+        android:textSize="16sp"
+        />
+
+</LinearLayout>

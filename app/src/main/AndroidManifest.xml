@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.muralex.achiever">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".presentation.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_app"
+        android:icon="@mipmap/ic_launcher_app_light"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting">
 
-        <receiver android:name=".notifications.AlarmReceiver" />
+        <receiver
+            android:name=".notifications.AlarmReceiver"
+            android:exported="false"></receiver>
 
-        <receiver android:name=".notifications.BootReceiver"
+        <receiver
+            android:name=".notifications.UpdateReceiver"
             android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".notifications.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
         <activity
-            android:exported="true"
             android:name=".presentation.activities.AppStart"
-            android:theme="@style/Theme.App.Starting"
-            >
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -43,14 +57,21 @@
 
         <activity
             android:name=".presentation.activities.search.SearchActivity"
-            android:theme="@style/Search"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:theme="@style/Search" />
 
         <activity
             android:name=".presentation.activities.search_images.SearchImageActivity"
-            android:theme="@style/Search"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:theme="@style/Search" />
 
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            tools:node="remove">
+        </provider>
 
     </application>
 

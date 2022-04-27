@@ -9,11 +9,44 @@
         android:id="@+id/nav_home"
         android:name="com.muralex.achiever.presentation.fragments.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home">
+        tools:layout="@layout/fragment_home"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        >
+
+
+        <action
+            android:id="@+id/action_nav_home"
+            app:destination="@id/nav_home"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
+        <action
+            android:id="@+id/action_nav_home_to_groupDetailFragment"
+            app:destination="@id/groupDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
 
         <action
             android:id="@+id/action_nav_home_to_groupEditFragment"
             app:destination="@id/groupEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
+        <action
+            android:id="@+id/action_nav_home_to_editFragment"
+            app:destination="@id/editFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -25,16 +58,61 @@
     <fragment
         android:id="@+id/nav_dashboard"
         android:name="com.muralex.achiever.presentation.fragments.pinned.DashboardFragment"
-        android:label="@string/menu_dashboard" />
+        android:label="@string/menu_dashboard"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        >
+        <action
+            android:id="@+id/action_nav_dashboard_to_editFragment"
+            app:destination="@id/editFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+
+            />
+        <action
+            android:id="@+id/action_nav_dashboard_to_groupDetailFragment"
+            app:destination="@id/groupDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
+    </fragment>
 
     <fragment
         android:id="@+id/nav_archive"
         android:name="com.muralex.achiever.presentation.fragments.archive.ArchiveFragment"
-        android:label="@string/menu_archive">
+        android:label="@string/menu_archive"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        >
+        <action
+            android:id="@+id/action_nav_archive_to_groupDetailFragment"
+            app:destination="@id/groupDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
 
         <action
             android:id="@+id/action_nav_archive_to_groupEditFragment"
             app:destination="@id/groupEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+        <action
+            android:id="@+id/action_nav_archive_to_editFragment"
+            app:destination="@id/editFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -46,7 +124,12 @@
     <fragment
         android:id="@+id/nav_contacts"
         android:name="com.muralex.achiever.presentation.fragments.contacts.ContactsFragment"
-        android:label="@string/menu_contacts" />
+        android:label="@string/menu_contacts"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        />
 
     <fragment
         android:id="@+id/nav_settings"
@@ -56,9 +139,61 @@
     <fragment
         android:id="@+id/groupEditFragment"
         android:name="com.muralex.achiever.presentation.fragments.group_edit.GroupEditFragment"
-        android:label="GroupEditFragment" >
+        android:label="" >
+
+        <action
+            android:id="@+id/action_groupEditFragment_to_groupDetailFragment"
+            app:destination="@id/groupDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
+        <action
+            android:id="@+id/action_groupEditFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpToInclusive="false"
+            app:popUpToSaveState="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
 
     </fragment>
+
+    <fragment
+        android:id="@+id/groupDetailFragment"
+        android:name="com.muralex.achiever.presentation.fragments.group_detail.GroupDetailFragment"
+        android:label="@string/group_detail_title" >
+
+        <action
+            android:id="@+id/action_groupDetailFragment_to_groupEditFragment"
+            app:destination="@id/groupEditFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+
+        <action
+            android:id="@+id/action_groupDetailFragment_to_editFragment"
+            app:destination="@id/editFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.muralex.achiever.presentation.fragments.item_edit.EditItemFragment"
+        android:label="" />
+
+
+
 
 
 </navigation>

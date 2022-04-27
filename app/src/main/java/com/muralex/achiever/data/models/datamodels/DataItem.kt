@@ -1,7 +1,12 @@
 package com.muralex.achiever.data.models.datamodels
 
 import androidx.room.*
+import com.muralex.achiever.presentation.utils.Constants
 import com.muralex.achiever.presentation.utils.Constants.COMPLETION_TYPE_NO_DATE
+import com.muralex.achiever.presentation.utils.Constants.COMPLETION_TYPE_REPEATED
+import com.muralex.achiever.presentation.utils.Constants.COMPLETION_TYPE_REPEATED_AFTER
+import com.muralex.achiever.presentation.utils.Constants.COMPLETION_TYPE_REPEAT_PERIOD
+import com.muralex.achiever.presentation.utils.Constants.ITEM_STATUS
 import com.muralex.achiever.presentation.utils.Constants.ITEM_STATUS_MODES
 import com.muralex.achiever.presentation.utils.Constants.REPEAT_PERIOD_DEFAULT
 
@@ -51,3 +56,45 @@ data class DataItemAndGroup(
     )
     val group: Group
 )
+
+fun DataItem.hasCompletedStatus() = this.status == ITEM_STATUS[5]
+fun DataItem.setCompletedStatus()  {
+    this.status = ITEM_STATUS[5]
+}
+
+fun DataItem.hasInactiveStatus() = this.status == ITEM_STATUS[2]
+fun DataItem.setInactiveStatus() {
+    this.status = ITEM_STATUS[2]
+}
+
+fun DataItem.hasUrgentStatus() =  this.status == ITEM_STATUS[1]
+fun DataItem.setUrgentStatus() {
+    this.status = ITEM_STATUS[1]
+}
+
+fun DataItem.hasNewStatus() =  this.status == ITEM_STATUS[0]
+fun DataItem.setNewStatus() {
+    this.status = ITEM_STATUS[0]
+}
+
+fun DataItem.hasInProgressStatus() =  this.status == ITEM_STATUS[4]
+fun DataItem.setInProgressStatus() {
+    this.status = ITEM_STATUS[4]
+}
+
+fun DataItem.hasStartedStatus() =  this.status == ITEM_STATUS[3]
+fun DataItem.setStartedStatus() {
+    this.status = ITEM_STATUS[3]
+}
+
+fun DataItem.isRepeated(): Boolean {
+    return completionType == COMPLETION_TYPE_REPEATED || completionType == COMPLETION_TYPE_REPEAT_PERIOD
+            || completionType == COMPLETION_TYPE_REPEATED_AFTER
+}
+
+fun DataItem.isScheduled() : Boolean {
+    var isScheduled = false
+    if (completionType != COMPLETION_TYPE_NO_DATE) isScheduled = true
+    if (hasInactiveStatus()) isScheduled = false
+    return isScheduled
+}

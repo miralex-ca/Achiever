@@ -6,48 +6,102 @@
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.106" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable-v24/ic_nav_archive.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable-v24/ic_nav_home.xml" value="0.1105" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_archive.xml" value="0.202" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_archive_swipe.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_move_top.xml" value="0.321" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_open.xml" value="0.311" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_pin.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_unarchive_swipe.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_unpin.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_action_unpin_swipe.xml" value="0.1255" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_archive_empty_list.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_arrow_drop_up.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_btn_arrow_btn.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_btn_delete_forever.xml" value="0.311" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_btn_list_empty.xml" value="0.1275" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_btn_search.xml" value="0.124" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_btn_web.xml" value="0.124" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_contact_rate.xml" value="0.106" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_fab_add.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_group_menu.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_home_empty_pic.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_list_empty_pic.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_menu_archive.xml" value="0.202" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_menu_unarchive.xml" value="0.202" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_archive.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_contacts.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_home.xml" value="0.1285" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_pinned.xml" value="0.1285" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_settings.xml" value="0.1285" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_nav_share.xml" value="0.1285" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_notification_pin.xml" value="0.1105" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_picture_edit.xml" value="0.1165" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_pinned_empty_list.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_pinned_empty_pic.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_status_check.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_status_circle.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_status_gray.xml" value="0.106" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_tab_image.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_task_repeat.xml" value="0.2705" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_text_alert.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_todo_blue.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_add_card.xml" value="0.311" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_archive.xml" value="0.202" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_edit.xml" value="0.202" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_edit_list.xml" value="0.1165" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_search.xml" value="0.106" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/ic_toolbar_unarchive.xml" value="0.202" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/side_nav_bar.xml" value="0.1105" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/splash_bg.xml" value="0.1105" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/drawable/splashscreen_icon.xml" value="0.1105" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/activity_main.xml" value="0.15476190476190477" />
-        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/activity_search.xml" value="0.15476190476190477" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/activity_search.xml" value="0.20277777777777778" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/activity_search_image.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/app_bar_main.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/content_main.xml" value="0.17527173913043478" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dataitem_list_item.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_completiont_type.xml" value="0.2477355072463768" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_confirm_remove.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_group_action.xml" value="0.2105978260869565" />
-        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_image_picker.xml" value="0.15476190476190477" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_image_picker.xml" value="0.22" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_image_picker_item_list.xml" value="0.15476190476190477" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_item_action.xml" value="0.5" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_item_action_status_list_item.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_set_repeat.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_status_mode.xml" value="0.22192028985507245" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/dialog_status_picker.xml" value="0.18297101449275363" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_archive.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_contacts.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_dashboard.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_gallery.xml" value="0.15476190476190477" />
-        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_group_edit.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_group_detail.xml" value="0.2056159420289855" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_group_edit.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_home.xml" value="0.15476190476190477" />
-        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/home_list_item.xml" value="0.5" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/fragment_item_edit.xml" value="0.1" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/home_list_item.xml" value="0.4152445961319681" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/ic_tab_icon.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/image_row.xml" value="0.18478260869565216" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/list_item_archive.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/list_item_group_dataitem.xml" value="0.42424242424242425" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/list_item_group_detail.xml" value="0.2342931937172775" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/list_item_group_empty_list.xml" value="0.2105978260869565" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/list_item_search.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/listitem_pinneditems.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/menu_btn_save.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/nav_header_main.xml" value="0.15476190476190477" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/pref_screen.xml" value="0.15476190476190477" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/search_item_more.xml" value="0.2128623188405797" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/select_edit_list_item.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/select_spinner_list_item.xml" value="0.18297101449275363" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/layout/status_radio_option.xml" value="0.18297101449275363" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/archive_menu.xml" value="0.31333333333333335" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/home_menu.xml" value="0.30925925925925923" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/menu_edit.xml" value="0.3182291666666667" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/menu_group.xml" value="0.3223958333333333" />
         <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/menu/pinned_menu.xml" value="0.3182291666666667" />
+        <entry key="..\:/Users/mirum/StudioProjects/Achiever/app/src/main/res/mipmap-anydpi-v26/ic_launcher_app_light.xml" value="0.1495" />
       </map>
     </option>
   </component>

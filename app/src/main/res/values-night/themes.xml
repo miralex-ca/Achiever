@@ -1,8 +1,9 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <color name="primaryColor">#9BCFF8</color>
     <color name="primaryDarkColor">#333</color>
-    <color name="primaryTextColor">#013C59</color>
+    <color name="primaryTextColor">#FFFFFF</color>
+<!--    <color name="primaryTextColor">#013C59</color>-->
     <color name="colorSurface">#3c3c3c</color>
     <color name="colorOnSurface">#fff</color>
     <color name="colorBackground">#333</color>
@@ -18,6 +19,8 @@
     <color name="secondaryDarkColor">#65B7FB</color>
     <color name="secondaryTextColor">#FFFFFF</color>
     <color name="colorError">#FA6F65</color>
+
+    <color name="completed_green">#F089FD8D</color>
 
     <style name="Search" parent="AppTheme"/>
 

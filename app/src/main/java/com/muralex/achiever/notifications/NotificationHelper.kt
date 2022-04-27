@@ -16,8 +16,14 @@ object NotificationHelper {
     private const val NOTIFICATION_CHANNEL_ID = "Reminder-Notification"
     const val NOTIFICATION_CHANNEL_NAME = "Reminder"
     const val NOTIFICATION_CHANNEL_DESC = "App notification"
+    private const val NOTIFICATION_REQUEST_CODE = 100
 
-    fun createNotificationChannel(context: Context, importance: Int, name: String, description: String) {
+    fun createNotificationChannel(
+        context: Context,
+        importance: Int,
+        name: String,
+        description: String,
+    ) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelId = NOTIFICATION_CHANNEL_ID
             val channel = NotificationChannel(channelId, name, importance)
@@ -27,16 +33,20 @@ object NotificationHelper {
         }
     }
 
-    fun createNotificationFromReceiver(context: Context, intent: Intent?) {
+    fun createNotificationFromReceiver(context: Context) {
         val title = context.getString(R.string.notification_title)
         val message = context.getString(R.string.notification_message)
+        createSampleDataNotification(context, title, message)
+    }
+
+    fun createNotificationFromWorker(context: Context, message: String) {
+        val title = context.getString(R.string.notification_title)
         createSampleDataNotification(context, title, message)
     }
 
     private fun createSampleDataNotification(context: Context, title: String, message: String) {
 
         val channelId = NOTIFICATION_CHANNEL_ID
-
         val notification = NotificationCompat.Builder(context, channelId).apply {
             setSmallIcon(R.drawable.ic_notification_pin)
             setContentTitle(title)
@@ -47,19 +57,21 @@ object NotificationHelper {
 
             val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            val pendingIntent = PendingIntent.getActivity(context, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+
+            val pendingIntentFlags = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) PendingIntent.FLAG_UPDATE_CURRENT
+                       else  PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+
+            val pendingIntent =
+                PendingIntent.getActivity(context, NOTIFICATION_REQUEST_CODE, intent, pendingIntentFlags)
+
             setContentIntent(pendingIntent)
         }
 
         val notificationManager =
-        context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.notify(1001, notification.build())
 
     }
-
-
 
 
 }

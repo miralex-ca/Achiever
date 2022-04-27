@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.webkit.URLUtil
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputLayout
 import com.muralex.achiever.R
 import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.databinding.DialogImagePickerBinding
@@ -22,8 +24,6 @@ class ImagePickerDialog @Inject constructor (
     @ActivityContext private val context: Context,
     ) {
 
-
-
     private var dialog: AlertDialog? = null
     private var pics = ITEM_ICONS
 
@@ -34,7 +34,6 @@ class ImagePickerDialog @Inject constructor (
     }
 
     fun open() {
-
         val layoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val binding = DialogImagePickerBinding.inflate(layoutInflater)
@@ -58,24 +57,24 @@ class ImagePickerDialog @Inject constructor (
             dismiss()
         }
 
-
         binding.btnSaveUrl.setOnClickListener {
-
             val text = binding.tidImageUrl.text
 
             if ( URLUtil.isValidUrl(text.toString())) {
                 onItemClicker?.let { listener -> listener(text.toString()) }
                 dismiss()
             } else {
-                binding.tilImageUrl.error = "Check the url"
+                binding.tilImageUrl.error = context.getString(R.string.error_url_not_valid)
             }
+        }
 
+        binding.tidImageUrl.addTextChangedListener {
+            binding.tilImageUrl.disableErrorMessage()
         }
 
         binding.tabImages.setOnClickListener {
             openTab(binding, IMAGES_TAB)
         }
-
 
 
         dialog = MaterialAlertDialogBuilder(context)
@@ -99,6 +98,11 @@ class ImagePickerDialog @Inject constructor (
             binding.tabIcons.setTabButtonActive(false)
             binding.tabImages.setTabButtonActive(true)
         }
+    }
+
+    private fun TextInputLayout.disableErrorMessage() {
+        this.error = null
+        this.isErrorEnabled = false
     }
 
     private var onItemClicker: ((String) -> Unit) ? = null

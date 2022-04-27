@@ -26,6 +26,8 @@ class SearchImageViewModel @Inject constructor(
 
     private val images = MutableLiveData<Resource<ImageResponse>>()
 
+    val displayEmptyList = MutableLiveData<Boolean>()
+
     val imageList : LiveData<Resource<ImageResponse>>
         get() = images
 
@@ -38,8 +40,11 @@ class SearchImageViewModel @Inject constructor(
 
         images.value = Resource.loading(null)
 
+        displayEmptyList.postValue(false)
+
         viewModelScope.launch {
             val response  = searchImage(searchString)
+
             response?.let {
                 images.value = response
             }

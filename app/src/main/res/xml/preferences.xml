@@ -41,5 +41,28 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        app:iconSpaceReserved="false"
+        app:title="Interface">
+
+        <SwitchPreferenceCompat
+            android:defaultValue="@bool/enable_swipe_default"
+            android:key="@string/enable_swipe_key"
+            android:summaryOff="@string/enable_swipe_off"
+            android:summaryOn="@string/enable_swipe_on"
+            android:title="@string/enable_swipe_title"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:defaultValue="@bool/task_delete_confirm_default"
+            android:key="@string/task_delete_confirm_key"
+            android:summaryOff="@string/task_delete_confirm_off"
+            android:summaryOn="@string/task_delete_confirm_on"
+            android:title="@string/task_delete_confirm_title"
+            app:iconSpaceReserved="false" />
+
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

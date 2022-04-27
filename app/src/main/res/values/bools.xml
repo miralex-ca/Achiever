@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="task_delete_confirm_default">true</bool>
+    <bool name="enable_swipe_default">true</bool>
+</resources>

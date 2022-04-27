@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="status"
+            type="String" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:padding="10dp"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_centerInParent="true"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="1dp"
+            android:layout_margin="5dp">
+
+            <LinearLayout
+                android:id="@+id/wrap"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="0dp">
+
+                <ImageView
+                    android:id="@+id/iv_item_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:contentDescription="Image"
+                    android:src="@drawable/ic_status_round"
+                    app:setImageStatusResource="@{status}"
+                    app:setImageStatusColor="@{status}" />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/selectedStatus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+                <ImageView
+                    app:setStatusCheckTint="@{status}"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_status_check"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+</layout>

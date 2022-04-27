@@ -15,7 +15,6 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class NavigationTest : BaseUITest() {
 
-
     @Test
     fun navigate_from_drawer() {
         navigateFromDrawer(R.id.nav_dashboard)
@@ -28,7 +27,6 @@ class NavigationTest : BaseUITest() {
 
     private fun navigateFromDrawer(direction: Int) {
         waitTime(500)
-
         onView(withId(R.id.drawer_layout))
             .check(matches(isClosed(Gravity.LEFT))) // Left Drawer should be closed.
             .perform(DrawerActions.open()) // Open Drawer

@@ -1,0 +1,171 @@
+[
+  {
+    "id": "1001",
+    "title": "We have added some lists and tasks as example",
+    "desc": "",
+    "text": "",
+    "status": "none",
+    "groupId": "1",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "1002",
+    "title": "Archive a list to check it later",
+    "desc": "Swipe on the home page or archive from the list menu",
+    "text": "",
+    "status": "none",
+    "groupId": "1",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "1003",
+    "title": "Add a new list from the home page",
+    "desc": "Use the add button on the toolbar",
+    "text": "",
+    "status": "none",
+    "groupId": "1",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+
+  {
+    "id": "2001",
+    "title": "Check the list progress",
+    "desc": "",
+    "text": "",
+    "status": "none",
+    "groupId": "2",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "2002",
+    "title": "Choose a list icon from the list",
+    "desc": "You will find icons list on the edit page",
+    "text": "",
+    "status": "none",
+    "groupId": "2",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "2003",
+    "title": "You can add an image instead of the icon",
+    "desc": "Images may require internet to download",
+    "text": "",
+    "status": "none",
+    "groupId": "2",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+  {
+    "id": "2004",
+    "title": "Delete the list with all tasks",
+    "desc": "You can do from the list edit page",
+    "text": "",
+    "status": "none",
+    "groupId": "2",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+  {
+    "id": "3001",
+    "title": "Long press opens quick actions menu",
+    "desc": "Change status, pin, edit or delete the task",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+  {
+    "id": "3002",
+    "title": "Pin a task for a quick access",
+    "desc": "The pinned task can be found in the Pinned section",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "3003",
+    "title": "Tap the checkbox to complete the task",
+    "desc": "",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+  {
+    "id": "3004",
+    "title": "Check the task status",
+    "desc": "Statuses: new, urgent, inactive, started, in progress, completed",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+  {
+    "id": "3005",
+    "title": "Task with a due date",
+    "desc": "",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "due_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  },
+
+  {
+    "id": "3006",
+    "title": "Repeated task",
+    "desc": "",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "repeated_period",
+    "statusMode": "manual",
+    "repeat": "10_day"
+  },
+
+  {
+    "id": "3007",
+    "title": "Search task",
+    "desc": "Use the search feature to find tasks",
+    "text": "",
+    "status": "none",
+    "groupId": "3",
+    "completionType": "no_date",
+    "statusMode": "manual",
+    "repeat": "1_day"
+  }
+
+
+
+
+
+
+
+]

@@ -81,10 +81,12 @@
             >
 
             <androidx.recyclerview.widget.RecyclerView
+                android:scrollbars="vertical"
+                android:scrollbarStyle="outsideOverlay"
                 android:id="@+id/recycler_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintHeight_max="300dp"
+                app:layout_constraintHeight_max="330dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:paddingTop="3dp"
@@ -94,69 +96,134 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:visibility="gone"
             tools:visibility="visible"
             android:id="@+id/images"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="320dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="30dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:orientation="vertical">
+            android:fillViewport="true"
+            android:gravity="center_horizontal">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_image_url"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="Image URL"
-                >
+                android:minHeight="350dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="0dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tid_image_url"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:paddingStart="12dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="3dp"
-                    android:paddingBottom="8dp"
-                    android:textSize="16sp"
-                    android:maxLines="4"
-                    />
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:text="Free Images from Pixabay*"
+                        android:textSize="15sp"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:text="You can find and use images from Pixabay.com, a free stock photography website."
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:minWidth="180dp"
+                        android:layout_gravity="center_horizontal"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:id="@+id/button"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_btn_search"
+                        android:text="Find  images  " />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:text="Image URL from Web*"
+                        android:textSize="15sp"
+                        android:layout_marginBottom="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_image_url"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:helperText="Insert a link to an actual image (not a web page) which usually ends in .jpg, .png, .gif."
+                        android:hint="Image URL"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/tid_image_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textCapSentences|textMultiLine"
+                            android:maxHeight="50dp"
+                            android:paddingStart="12dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="3dp"
+                            android:paddingBottom="8dp"
+                            android:textSize="14sp"
+                            android:maxLines="4"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="12dp"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:id="@+id/btn_save_url"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/ic_btn_web"
+                        android:minWidth="180dp"
+                        android:text="Save image URL " />
 
 
-            <Button
-                android:id="@+id/btn_save_url"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save URL" />
+                </LinearLayout>
 
 
-            <TextView
-                android:layout_marginTop="30dp"
-                android:text="Find and image on Pixabay.com"
-                android:textSize="16sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Search" />
+                <TextView
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:layout_marginBottom="2dp"
+                    android:text="* Please note that internent connection is required to load images from Web."
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
 
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
-        </LinearLayout>
 
     </LinearLayout>
 

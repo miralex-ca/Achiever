@@ -1,35 +1,27 @@
 [
 
-  { "id": "1",
-    "title": "Group 1  ",
-    "text": "Description for group 1",
-    "image": "",
+  { "id": "3",
+    "title": "Task features",
+    "text": "Quick overview of the task features",
+    "image": "file:///android_asset/icons/todos.png",
     "favorite": 0,
     "sort": 0
   },
 
   { "id": "2",
-    "title": "Group 2  ",
-    "text": "Description for group 2",
-    "image": "",
+    "title": "List features",
+    "text": "Quick overview of the list features",
+    "image": "file:///android_asset/icons/todo-list.png",
     "favorite": 0,
     "sort": 2
   },
 
-  { "id": "3",
-    "title": "Group 3  ",
-    "text": "Description for group 3",
-    "image": "",
+  { "id": "1",
+    "title": "Welcome!",
+    "text": "",
+    "image": "file:///android_asset/icons/greeting.png",
     "favorite": 0,
     "sort": 3
-  },
-
-  { "id": "4",
-    "title": "Group 4  ",
-    "text": "Description for group 4",
-    "image": "",
-    "favorite": 0,
-    "sort": 4
   }
 
 

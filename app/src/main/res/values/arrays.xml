@@ -29,7 +29,7 @@
     <string name="notification_options_value_default">morning</string>
 
     <string-array name="item_pics_list">
-        <item>icons/list.png</item>
+        <item>icons/todo-list.png</item>
         <item>icons/text.png</item>
         <item>icons/contacts.png</item>
         <item>icons/travel.png</item>
@@ -42,13 +42,23 @@
         <item>icons/basketball.png</item>
         <item>icons/school.png</item>
         <item>icons/info.png</item>
-        <item>icons/check.png</item>
-        <item>icons/circle.png</item>
         <item>icons/minus.png</item>
         <item>icons/misc.png</item>
         <item>icons/pine-tree.png</item>
         <item>icons/calendar.png</item>
         <item>icons/laptop.png</item>
+        <item>icons/greeting.png</item>
+        <item>icons/handshake.png</item>
+        <item>icons/task_good.png</item>
+        <item>icons/todo-list.png</item>
+        <item>icons/todos.png</item>
+        <item>icons/trending-up.png</item>
+        <item>icons/wrench.png</item>
+        <item>icons/bug.png</item>
+        <item>icons/cash.png</item>
+        <item>icons/emergency.png</item>
+
+
     </string-array>
 
     <string-array name="set_status_mode">
@@ -59,13 +69,13 @@
     <string-array name="set_status_mode_values">
         <item>Manual</item>
         <item>Auto</item>
-        <item>Auto (Overdue -> New)</item>
+        <item>Auto (Overdue -> Not Urgent)</item>
     </string-array>
 
     <string-array name="status_mode_titles">
         <item>Manual</item>
         <item>Auto</item>
-        <item>Auto (Overdue -> New)</item>
+        <item>Auto (Overdue -> Not Urgent)</item>
     </string-array>
 
     <string-array name="status_mode_desc">
@@ -77,7 +87,7 @@
     <string-array name="repeat_status_mode_titles">
         <item>Manual</item>
         <item>Auto (Overdue -> Urgent)</item>
-        <item>Auto (Overdue -> New)</item>
+        <item>Auto (Overdue -> Not Urgent)</item>
     </string-array>
 
     <string-array name="repeat_status_mode_desc">
@@ -89,7 +99,17 @@
     <string-array name="set_completion_type_values">
         <item>No date</item>
         <item>Due Date</item>
-        <item>Repeat</item>
+        <item>Repeat Date</item>
+        <item>Repeat Period</item>
+        <item>Repeat after completion</item>
+    </string-array>
+
+    <string-array name="set_completion_type_desc">
+        <item>No specific date to complete the task.</item>
+        <item>You can set a specific date to complete the task.</item>
+        <item>The date will be repeated according to the parameters you set.</item>
+        <item>Complete the task within a scheduled period of time.</item>
+        <item>Complete the task within a period of time after it was completed.</item>
     </string-array>
 
     <string-array name="period_repeat_values">

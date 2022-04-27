@@ -5,9 +5,14 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,14 +21,18 @@ import androidx.navigation.fragment.findNavController
 import com.example.tasker.presentation.components.imagepicker.ImagePickerDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.muralex.achiever.R
+import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.databinding.FragmentGroupEditBinding
 import com.muralex.achiever.presentation.activities.search_images.SearchImageResultCallback
 import com.muralex.achiever.presentation.components.ConfirmDialog
+import com.muralex.achiever.presentation.utils.Constants
+import com.muralex.achiever.presentation.utils.Constants.ITEM_NEW_LIST_ID
 import com.muralex.achiever.presentation.utils.dataBindings
+import com.muralex.achiever.presentation.utils.displayIf
+import com.muralex.achiever.presentation.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
 import javax.inject.Inject
 
 
@@ -32,6 +41,7 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
 
     @Inject
     lateinit var confirmDialog: ConfirmDialog
+
     @Inject
     lateinit var imagePickerDialog: ImagePickerDialog
 
@@ -60,21 +70,43 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
             confirmDeletion()
         }
 
+        binding.btnOpenGroup.setOnClickListener {
+            openGroup()
+        }
+
+        binding.progressSwitchBox.setOnClickListener {
+            viewModel.changeDisplayProgress()
+        }
+
+        binding.detailsSwitchBox.setOnClickListener {
+            viewModel.changeDisplayDetails()
+        }
+
         binding.etTitle.addTextChangedListener {
             binding.titleLabel.disableErrorMessage()
         }
 
-        binding.etText.addTextChangedListener {
-            binding.tilTextLabel.disableErrorMessage()
+        binding.etListDesc.addTextChangedListener {
+            binding.tilListDesc.disableErrorMessage()
         }
 
-        initItemData ()
+        initItemData()
 
+    }
+
+
+    private fun setToolbarTitle(isCreated: Boolean) {
+        val title = if (!isCreated) {
+            getString(R.string.create_new_list)
+        } else {
+            getString(R.string.edit_list)
+        }
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = title
     }
 
     private fun openImagePicker() {
         imagePickerDialog.apply {
-            setOnItemClicker() { selected ->
+            setOnItemClicker { selected ->
                 if (selected == "url") {
                     openSearch()
                 } else {
@@ -87,17 +119,33 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
     }
 
 
-    private fun selectImage (image: String) {
+    private fun selectImage(image: String) {
         viewModel.setImage(image)
         viewModel.checkChanges()
     }
 
-    private fun initItemData () {
+    private fun initItemData() {
+
+        viewModel.isCreated.observe(viewLifecycleOwner) {
+            setToolbarTitle(it)
+            checkOpenButtonDisplay()
+        }
 
         viewModel.getItem(itemId)
+
         viewModel.formTitle.observe(viewLifecycleOwner) { viewModel.checkChanges() }
         viewModel.formText.observe(viewLifecycleOwner) { viewModel.checkChanges() }
         viewModel.isDataChanged.observe(viewLifecycleOwner) { displayChanges(it) }
+
+        viewModel.formDetailDisplay.observe(viewLifecycleOwner) {
+            binding.detailsSwitch.isChecked = it <= 0
+            viewModel.checkChanges()
+        }
+
+        viewModel.formProgressDisplay.observe(viewLifecycleOwner) {
+            binding.progressSwitch.isChecked = it <= 0
+            viewModel.checkChanges()
+        }
 
         viewModel.currentLiveState.observe(viewLifecycleOwner) {
             viewModel.checkChanges()
@@ -107,7 +155,11 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
         if (viewModel.isNewGroup()) {
             showKeyboard(binding.etTitle)
         }
+
+
     }
+
+
 
     private fun showKeyboard(view: View) {
         Handler(Looper.myLooper()!!).postDelayed({
@@ -124,7 +176,6 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
         inflater.inflate(R.menu.menu_edit, menu)
         saveButton = menu.findItem(R.id.action_save_item)
         setSaveButtonOnClick()
@@ -139,21 +190,31 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
         }
     }
 
-
     private fun confirmDeletion() {
-        confirmDialog.open(getString(R.string.confirm_deletion),getString(R.string.confirm_delete_msg) ) {
+        confirmDialog.open(getString(R.string.confirm_deletion),
+            getString(R.string.confirm_delete_msg)) {
             deleteItem()
         }
     }
 
+    private fun checkOpenButtonDisplay() {
+        val groupId = viewModel.getSavedGroupId()
+        binding.btnOpenGroup.displayIf(groupId != ITEM_NEW_LIST_ID)
+    }
+
+    private fun openGroup() {
+        val groupId = viewModel.getSavedGroupId()
+        val bundle = bundleOf("item" to groupId)
+        findNavController(). popBackStack()
+        findNavController().navigate(R.id.groupDetailFragment, bundle)
+    }
+
     private fun deleteItem() {
         lifecycleScope.launch {
-            delay(300)
+            delay(200)
             viewModel.deleteItem()
-
-           // findNavController().popBackStack(R.id.groupDetailFragment, false) .and(findNavController().popBackStack())
-            findNavController().popBackStack()
-
+            findNavController().popBackStack(R.id.groupDetailFragment, false)
+                .and(findNavController().popBackStack())
         }
     }
 
@@ -167,7 +228,6 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
         }
     }
 
-    ////// fields validation and errors display and reset
 
     private fun handleErrorFields(data: GroupEditViewModel.ValidationState.InvalidFields) {
         val validationFields = initValidationFields()
@@ -179,7 +239,7 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
 
     private fun initValidationFields() = mapOf(
         GroupEditViewModel.INPUT_ITEM_TITLE.first to binding.titleLabel,
-        GroupEditViewModel.INPUT_ITEM_TEXT.first to binding.tilTextLabel
+        GroupEditViewModel.INPUT_ITEM_DESC.first to binding.tilListDesc
     )
 
     private fun TextInputLayout.disableErrorMessage() {
@@ -193,17 +253,10 @@ class GroupEditFragment : Fragment(R.layout.fragment_group_edit) {
     }
 
     private val getContent = registerForActivityResult(SearchImageResultCallback()) {
-
         if (it[0] != SearchImageResultCallback.SEARCH_IMAGE_FAILED) {
-
-           if (it.size > 0) selectImage(it[0])
-
+            if (it.size > 0) selectImage(it[0])
         }
     }
-
-
-
-
 
 
 }

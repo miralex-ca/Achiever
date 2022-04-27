@@ -5,8 +5,53 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".presentation.fragments.home.HomeFragment">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loader_progress"
+            android:indeterminate="true"
+            app:trackCornerRadius="3dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/empty_archive_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="120dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:alpha="0.5"
+                android:id="@+id/image_home_empty"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/ic_archive_empty_list" />
+
+            <TextView
+                android:gravity="center"
+                android:alpha="0.8"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="18dp"
+                android:textSize="15sp"
+                android:text="@string/archive_empty_list_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:scrollbars="vertical"

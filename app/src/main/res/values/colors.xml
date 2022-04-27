@@ -47,10 +47,16 @@
     <color name="status_blue">#2ABCFD</color>
     <color name="status_green">#F00FD617</color>
 
+    <color name="status_cyan">#3CE4C3</color>
+    <color name="status_orange">#FFD027</color>
+
     <color name="status_dark_check">#9A171717</color>
 
     <color name="inactive_tab_btn">#080C0C0C</color>
     <color name="active_tab_btn">#00000000</color>
+
+    <color name="completed_green">#F058B85D</color>
+
 
 
 </resources>

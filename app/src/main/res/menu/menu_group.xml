@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_unarchive"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_toolbar_archive"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        android:icon="@drawable/ic_toolbar_edit_list"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_add_task"
+        android:orderInCategory="100"
+        android:title="Create new task"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_archive"
+        android:orderInCategory="100"
+        android:title="Archive list"
+        app:showAsAction="never" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+
+</menu>

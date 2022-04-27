@@ -8,6 +8,63 @@
         android:layout_height="match_parent"
         tools:context=".presentation.fragments.home.HomeFragment">
 
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/loader_progress"
+            android:indeterminate="true"
+            app:trackCornerRadius="3dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/empty_home_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="80dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:alpha="0.8"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="18dp"
+                android:textSize="18sp"
+                android:text="@string/home_empty_list_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <ImageView
+                android:alpha="0.5"
+                android:id="@+id/image_home_empty"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:srcCompat="@drawable/ic_home_empty_pic" />
+
+            <TextView
+                android:alpha="0.8"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="18dp"
+                android:textSize="16sp"
+                android:text="@string/home_empty_list_hint_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:scrollbars="vertical"
             android:scrollbarStyle="outsideOverlay"
@@ -21,6 +78,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -34,11 +34,13 @@ interface DataItemDao {
     @Delete
     suspend fun delete(item: DataItem)
 
+    @Transaction
     @Query("SELECT * from group_table WHERE group_archived = 0")
-    fun getAllGroups(): Flow<List<Group>>
+    fun getAllGroups(): Flow<List<GroupWithDataItems>>
 
+    @Transaction
     @Query("SELECT * from group_table WHERE group_archived > 0")
-    fun getAllArchivedGroups(): Flow<List<Group>>
+    fun getAllArchivedGroups(): Flow<List<GroupWithDataItems>>
 
     @Transaction
     @Query("SELECT * FROM group_table WHERE group_id = :groupId")
@@ -61,8 +63,11 @@ interface DataItemDao {
     @Query("SELECT * from data_table WHERE dataitem_pinned > 0")
     fun getPinnedItems(): Flow<List<DataItem>>
 
-    @Query("SELECT * from data_table a left join group_table b ON a.group_id = b.group_id WHERE a.dataitem_title LIKE '%'||:query||'%' " +
-            "OR a.dataitem_desc LIKE '%'||:query||'%' OR a.dataitem_text LIKE '%'||:query||'%' OR b.group_title LIKE '%'||:query||'%'")
+
+    @Transaction
+    @RewriteQueriesToDropUnusedColumns
+    @Query("SELECT * from data_table a left join group_table b ON a.group_id = b.group_id WHERE b.group_id IS NOT NULL AND ( a.dataitem_title LIKE '%'||:query||'%' " +
+            "OR a.dataitem_desc LIKE '%'||:query||'%' OR a.dataitem_text LIKE '%'||:query||'%' OR b.group_title LIKE '%'||:query||'%')")
     fun searchByQuery(query: String): Flow<List<DataItemAndGroup>>
 
 

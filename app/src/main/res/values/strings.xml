@@ -2,7 +2,7 @@
     <string name="app_name">Achiever</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Achiever</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -27,9 +27,19 @@
     <string name="dark_mode_system">dark_mode_system</string>
     <string name="dark_mode_disabled">dark_mode_disabled</string>
     <string name="dark_mode_title">Dark Mode</string>
+    <string name="notification_title">Check your tasks!</string>
+    <string name="notification_message">You have no urgent tasks so far.</string>
+    <string name="notification_info">You have %s and %s in active lists.</string>
 
-    <string name="notification_title">Notification</string>
-    <string name="notification_message">Check your tasks</string>
+    <plurals name="number_of_urgent_tasks">
+        <item quantity="one">%d urgent task</item>
+        <item quantity="other">%d urgent tasks</item>
+    </plurals>
+
+    <plurals name="number_of_tasks_today">
+        <item quantity="one">%d task  due today</item>
+        <item quantity="other">%d tasks  due today</item>
+    </plurals>
 
     <string name="action_move_to_top">Move to top</string>
     <string name="action_open">View</string>
@@ -38,25 +48,81 @@
     <string name="action_delete">Delete</string>
     <string name="archive_text">Archive</string>
     <string name="unarchive_text">Unarchive</string>
+    <string name="unpin_text">Unpin</string>
 
     <string name="invalid_item_title">Title is invalid.</string>
-    <string name="invalid_item_title_empty">Title cannot be empty</string>
+    <string name="invalid_item_title_empty">Title cannot be empty.</string>
     <string name="invalid_item_title_long">Title is too long.</string>
-    <string name="invalid_item_text">Text is invalid.</string>
+    <string name="invalid_item_desc">Description is too long.</string>
+    <string name="invalid_item_text">Text is too long.</string>
     <string name="title_edit_hint">Title</string>
     <string name="text_edit_hint">Note</string>
-    <string name="delete_forever_btn">Delete forever</string>
+    <string name="delete_list_btn">Delete this list</string>
+    <string name="delete_forever_btn">Delete this task</string>
+    <string name="group_title_edit_hint">List title</string>
+    <string name="group_desc_edit_hint">List description</string>
 
     <string name="cancel_txt">Cancel</string>
     <string name="close_txt">Close</string>
     <string name="select_icon_txt">Select icon</string>
     <string name="confirm_txt">Confirm</string>
-
     <string name="confirm_deletion">Confirm deletion</string>
     <string name="confirm_delete_msg">\nAre you sure you want to delete this item?\n</string>
-
     <string name="edit_item_title">Edit</string>
     <string name="save_btn_txt">Save</string>
+    <string name="desc_due_date">"Due: "</string>
+
+    <string name="group_total_progress">"Progress: %1s%%    Completed: %2s/%1s"</string>
+    <string name="group_total_no_progress">"Total: %1s       Completed: %1s"</string>
+    <string name="group_progress">Progress: %1s%%</string>
+    <string name="group_completed_total">Completed: %1s/%1s</string>
+
+    <string name="task_completed">Done: %s</string>
+    <string name="task_next_date">Next: %s</string>
+    <string name="group_total">Total: %1s</string>
+    <string name="group_completed">Completed: %1s</string>
+
+    <string name="dont_display_status">Do not display</string>
+    <string name="current_status">Current status</string>
+    <string name="desc_edit_hint">Description</string>
+    <string name="status_white_title">Status: New</string>
+    <string name="status_red_title">Status: Urgent</string>
+    <string name="status_gray_title">Status: No progress/Inactive</string>
+    <string name="status_yellow_title">Status: Started</string>
+    <string name="status_blue_title">Status: In progress</string>
+    <string name="status_green_title">Status: Completed</string>
+    <string name="auto_status_hint">* Will display auto status</string>
+    <string name="auto_mode_is_enabled">Attention: Auto update mode is enabled</string>
+    <string name="select_status_dialog_title">Select status</string>
+    <string name="dialog_status_mode_title">Status update mode</string>
+    <string name="group_detail_title">List</string>
+    <string name="error_url_not_valid">URL is not valid.</string>
+    <string name="create_new_item">Create task</string>
+    <string name="edit_item">Edit task</string>
+    <string name="create_new_list">New list</string>
+    <string name="edit_list">Edit list</string>
+    <string name="task_delete_confirm_title">Confirm task deletion</string>
+    <string name="task_delete_confirm_off">Disabled on the list page</string>
+    <string name="task_delete_confirm_on">Enabled on the list page</string>
+    <string name="task_delete_confirm_key">task_delete_confirm</string>
+    <string name="dont_ask_again">Don\'t ask again</string>
+    <string name="enable_swipe_key">enable_swipe</string>
+    <string name="enable_swipe_off">Swipe is disabled</string>
+    <string name="enable_swipe_on">Swipe is enabled</string>
+    <string name="enable_swipe_title">Enable swipe</string>
+    <string name="archive_empty_list_hint">You can archive task lists and\n remove them from the home page</string>
+    <string name="pinned_empty_list_hint">You can add tasks here \nfor a quick access</string>
+    <string name="home_empty_list_hint">Is it time to set a new goal? </string>
+    <string name="home_empty_list_hint_2">Or just relax …</string>
+    <string name="open_new_list">Open this list</string>
+    <string name="no_search_results">No search results for the query</string>
+    <string name="enter_search_query">Search tasks by text matching their titles, \ndescription, list names etc.</string>
+    <string name="enter_search_images_query">Search images on Pixabay.com, \n a free stock photography website.</string>
+    <string name="dialog_auto_update_hint">Status auto update is enabled.</string>
+    <string name="dialog_auto_update_status_hint">Currently displayed: </string>
+    <string name="task_edit_auto_update_hint">* Status auto update is enabled, it may differ from manually selected.</string>
+    <string name="task_edit_status_auto_mode_hint">Auto update is enabled, current status:</string>
+    <string name="check_net_work">Check your network connection</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.muralex.achiever.presentation.activities.search_images.image_api
 
+import com.muralex.achiever.BuildConfig
 import com.muralex.achiever.presentation.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -11,7 +12,7 @@ interface RetrofitAPI {
     suspend fun imageSearch(
 
         @Query("q") searchQuery: String,
-        @Query("key") apiKey : String = API_KEY,
+        @Query("key") apiKey : String = BuildConfig.API_KEY,
         @Query ("per_page") perPAge : Int = 30
 
     ) : Response<ImageResponse>

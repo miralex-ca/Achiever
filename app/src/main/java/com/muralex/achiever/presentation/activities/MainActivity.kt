@@ -1,11 +1,14 @@
 package com.muralex.achiever.presentation.activities
 
+import android.annotation.SuppressLint
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
@@ -28,8 +31,11 @@ class MainActivity : AppCompatActivity(),
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -57,7 +63,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
@@ -72,17 +78,20 @@ class MainActivity : AppCompatActivity(),
                 selectItem = false
             }
 
-            R.id.nav_home ->
+            R.id.nav_home -> {
                 navController.popBackStack(R.id.nav_home, false)
+            }
+
 
             R.id.nav_dashboard -> {
+
                 navController.popBackStack(R.id.nav_home, false)
-                navController.navigate(R.id.nav_dashboard)
+                navController.navigate(R.id.nav_dashboard, null, getNavOptions())
             }
 
             R.id.nav_archive-> {
                 navController.popBackStack(R.id.nav_home, false)
-                navController.navigate(R.id.nav_archive)
+                navController.navigate(R.id.nav_archive, null, getNavOptions())
             }
 
             else -> {
@@ -96,6 +105,16 @@ class MainActivity : AppCompatActivity(),
         }
 
         return selectItem
+    }
+
+    private fun getNavOptions() : NavOptions{
+      return  NavOptions
+            .Builder()
+            .setEnterAnim(R.anim.fade_in)
+             .setExitAnim(R.anim.fade_exit_out)
+             .setPopEnterAnim(R.anim.fade_in)
+              .setPopExitAnim(R.anim.fade_exit_out)
+            .build()
     }
 
 

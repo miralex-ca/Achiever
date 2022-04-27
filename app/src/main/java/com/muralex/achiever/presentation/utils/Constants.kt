@@ -4,23 +4,39 @@ import com.muralex.achiever.R
 
 object Constants {
 
-    const val API_KEY = "24213131-3a626945480f9df27c5efc7ab"
+    const val API_KEY = ""
     const val BASE_URL = "https://pixabay.com"
 
     const val DATABASE_NAME = "app_database"
     const val ITEM_ID_KEY = "item"
+
+    const val ITEM_NEW_ID = "new"
+    const val ITEM_NEW_LIST_ID = "new"
 
     const val CHANNEL_ID = "com.example.tasker.channel"
     const val WORK_TAG = "tag"
 
     const val IMAGES_FOLDER_ICONS = "file:///android_asset/"
 
-    val SAMPLE_IMAGE = IMAGES_FOLDER_ICONS + "icons/list.png"
+    val SAMPLE_IMAGE = IMAGES_FOLDER_ICONS + "icons/todo-list.png"
 
     const val DATA_FILENAME = "file_name"
 
     const val GROUP_TITLE_LIMIT = 60
-    const val GROUP_DESC_LIMIT = 100
+    const val GROUP_DESC_LIMIT = 80
+    const val ITEM_TITLE_LIMIT = 80
+    const val ITEM_DESC_LIMIT = 100
+    const val ITEM_TEXT_LIMIT = 200
+
+    const val GROUP_LIST_START_COUNT = 25
+    const val GROUP_LIST_LEFT_BEFORE_ADD = 8
+    const val GROUP_LIST_SCROLL_ADD = 15
+
+    const val HOME_LIST_INIT_DELAY: Long = 800
+
+    const val TASK_LIST_START_COUNT = 25
+    const val TASK_LIST_LEFT_BEFORE_ADD = 8
+    const val TASK_LIST_SCROLL_ADD = 15
 
     const val GROUP_DETAIL_ITEM_ID = "group_detail"
 
@@ -28,16 +44,26 @@ object Constants {
     const val ITEM_STATUS_MODE_AUTO = "auto"
     const val ITEM_STATUS_MODE_AUTO_NEW = "auto_new"
 
+
     val ITEM_STATUS_MODES = listOf(ITEM_STATUS_MODE_MANUAL, ITEM_STATUS_MODE_AUTO, ITEM_STATUS_MODE_AUTO_NEW)
 
     const val COMPLETION_TYPE_NO_DATE = "no_date"
     const val COMPLETION_TYPE_DUE_DATE = "due_date"
     const val COMPLETION_TYPE_REPEATED = "repeated"
+    const val COMPLETION_TYPE_REPEAT_PERIOD = "repeated_period"
+    const val COMPLETION_TYPE_REPEATED_AFTER = "repeat_after"
 
-    val ITEM_COMPLETION_TYPE = listOf(COMPLETION_TYPE_NO_DATE, COMPLETION_TYPE_DUE_DATE, COMPLETION_TYPE_REPEATED)
+
+    val ITEM_COMPLETION_TYPE = listOf(
+        COMPLETION_TYPE_NO_DATE,
+        COMPLETION_TYPE_DUE_DATE,
+        COMPLETION_TYPE_REPEATED,
+        COMPLETION_TYPE_REPEAT_PERIOD,
+        COMPLETION_TYPE_REPEATED_AFTER
+    )
+
 
     const val REPEAT_PERIOD_DEFAULT = "1_day"
-
     val REPEAT_PERIODS = listOf("day", "week", "month", "year")
 
     enum class Action {

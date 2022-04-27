@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cat_item_wrap"
+    android:focusable="true"
+    android:clickable="true"
+    android:gravity="center_horizontal"
+    >
+
+    <RelativeLayout
+        android:id="@+id/openMoreWrap"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:cardElevation="2dp"
+            android:layout_gravity="bottom|center"
+            app:contentPadding="0dp"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="18dp"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/openMore"
+                android:focusable="true"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/openMoreTxt"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:text="Load more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
