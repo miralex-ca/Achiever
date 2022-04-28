@@ -6,14 +6,12 @@ import com.muralex.achiever.data.models.mappers.CurrentTime
 import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.domain.group_usecases.GetGroupsListUseCase
 import com.muralex.achiever.domain.group_usecases.UpdateGroupUseCase
-import com.muralex.achiever.presentation.fragments.archive.ArchiveViewModelTest
-import com.muralex.achiever.presentation.utils.Constants
 import com.muralex.achiever.presentation.utils.Constants.GROUP_LIST_LEFT_BEFORE_ADD
 import com.muralex.achiever.presentation.utils.Constants.GROUP_LIST_SCROLL_ADD
 import com.muralex.achiever.presentation.utils.Constants.TASK_LIST_START_COUNT
-import com.muralex.achiever.utils.BaseUnitTest
-import com.muralex.achiever.utils.getOrAwaitValueTest
-import junit.framework.Assert.assertEquals
+import com.muralex.achiever.utilities.BaseUnitTest
+import com.muralex.achiever.utilities.TestDoubles
+import com.muralex.achiever.utilities.getOrAwaitValueTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
@@ -30,71 +28,69 @@ import org.mockito.kotlin.whenever
 @ExperimentalCoroutinesApi
 class HomeViewModelTest : BaseUnitTest()  {
 
-    private lateinit var SUT: HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
     private val getGroupsListUseCase: GetGroupsListUseCase = mock()
     private val updateGroupUseCase: UpdateGroupUseCase = mock()
     private val currentTime: CurrentTime = mock()
-    private val expected = listOf(FAKE_GROUP_DATA)
+    private val expected = listOf(testGroupData)
 
     @Before
     fun setUp() {
-        whenever( currentTime.getMillis()).thenReturn( CURRENT_TIME )
+        whenever( currentTime.getMillis()).thenReturn( testCurrentTime )
     }
 
     @Test
     fun noChangeListCountIfMaxIsNotReached() = runTest {
         mockSuccessfulCase()
         val listCountMaxNotReached = TASK_LIST_START_COUNT - GROUP_LIST_LEFT_BEFORE_ADD - 1
-        SUT.addListItems(listCountMaxNotReached)
-        assertThat(SUT.maxListSize).isEqualTo(TASK_LIST_START_COUNT)
+        homeViewModel.addListItems(listCountMaxNotReached)
+        assertThat(homeViewModel.maxListSize).isEqualTo(TASK_LIST_START_COUNT)
     }
 
     @Test
     fun changeListCountIfMaxIsReached() = runTest {
         mockSuccessfulCase()
         val listCountMaxReached = TASK_LIST_START_COUNT - GROUP_LIST_LEFT_BEFORE_ADD + 1
-        SUT.addListItems(listCountMaxReached)
-        assertThat(SUT.maxListSize).isEqualTo(TASK_LIST_START_COUNT + GROUP_LIST_SCROLL_ADD)
+        homeViewModel.addListItems(listCountMaxReached)
+        assertThat(homeViewModel.maxListSize).isEqualTo(TASK_LIST_START_COUNT + GROUP_LIST_SCROLL_ADD)
     }
     
     @Test
     fun getGroupsListIfLifeDataEvent() = runTest {
         mockSuccessfulCase()
-        SUT.groupsLIst.getOrAwaitValueTest()
+        homeViewModel.groupsLIst.getOrAwaitValueTest()
         verify(getGroupsListUseCase, times(1)).invoke()
     }
 
     @Test
     fun emitsDataFromGroupsListUseCase()  = runBlockingTest {
         mockSuccessfulCase()
-        assertThat(SUT.groupsLIst.getOrAwaitValueTest()).isEqualTo(expected)
+        assertThat(homeViewModel.groupsLIst.getOrAwaitValueTest()).isEqualTo(expected)
     }
 
     @Test
     fun updateGroupSortTimeIfMovedUp() = runTest {
         val argument: ArgumentCaptor<Group> = ArgumentCaptor.forClass(Group::class.java)
         mockSuccessfulCase()
-        SUT.moveGroupToUp(FAKE_GROUP)
+        homeViewModel.moveGroupToUp(testGroup)
         verify(updateGroupUseCase, times(1)).invoke(MockitoHelper.capture(argument))
-        assertThat( argument.value.sort).isEqualTo(CURRENT_TIME)
+        assertThat( argument.value.sort).isEqualTo(testCurrentTime)
     }
 
     @Test
     fun updateGroupArchivedAndSortTimeIfChangesArchived() = runTest {
         val argument: ArgumentCaptor<Group> = ArgumentCaptor.forClass(Group::class.java)
         mockSuccessfulCase()
-        SUT.archiveGroup(FAKE_GROUP)
+        homeViewModel.archiveGroup(testGroup)
         verify(updateGroupUseCase, times(1)).invoke(MockitoHelper.capture(argument))
         assertThat(argument.value.archived).isEqualTo(1)
-        assertThat( argument.value.sort).isEqualTo(CURRENT_TIME)
+        assertThat( argument.value.sort).isEqualTo(testCurrentTime)
     }
 
-    companion object {
-        private const val FAKE_GROUP_ID = "group_id"
-        val FAKE_GROUP  =  Group(FAKE_GROUP_ID, "", "", "", 0, 0, 0)
-        val FAKE_GROUP_DATA = GroupData(FAKE_GROUP)
-
-        const val CURRENT_TIME : Long = 20
+    private companion object {
+        val testGroup  =  TestDoubles.testGroup
+        val testGroupData = TestDoubles.testGroupData
+        const val testCurrentTime : Long = 20
     }
 
     private fun mockSuccessfulCase() {
@@ -103,7 +99,7 @@ class HomeViewModelTest : BaseUnitTest()  {
                 emit(expected)
             }
         )
-        SUT = HomeViewModel(getGroupsListUseCase, updateGroupUseCase, currentTime)
+        homeViewModel = HomeViewModel(getGroupsListUseCase, updateGroupUseCase, currentTime)
     }
 
 

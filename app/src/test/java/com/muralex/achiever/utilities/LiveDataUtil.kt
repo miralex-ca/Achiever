@@ -1,4 +1,4 @@
-package com.muralex.achiever.utils
+package com.muralex.achiever.utilities
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

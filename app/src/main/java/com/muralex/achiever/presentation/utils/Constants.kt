@@ -6,6 +6,7 @@ object Constants {
 
     const val API_KEY = ""
     const val BASE_URL = "https://pixabay.com"
+    const val CONTACT_EMAIL = "study.languages.online@gmail.com"
 
     const val DATABASE_NAME = "app_database"
     const val ITEM_ID_KEY = "item"

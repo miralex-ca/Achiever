@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:contentDescription="@string/nav_header_title"
         app:srcCompat="@mipmap/ic_launcher_app_light" />
 

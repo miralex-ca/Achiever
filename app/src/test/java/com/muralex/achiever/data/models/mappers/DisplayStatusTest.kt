@@ -21,21 +21,21 @@ import java.time.format.DateTimeFormatter
 
 class DisplayStatusTest  {
 
-    lateinit var SUT: DisplayStatus
+    lateinit var displayStatus: DisplayStatus
     private val currentTime: CurrentTime = mock()
 
     @Before
     fun setUp() {
         val  testMoment = "2020/10/10 10:10:10"
         whenever( currentTime.getMillis()).thenReturn(convertTimeToMillis(testMoment))
-        SUT = DisplayStatus(currentTime)
+        displayStatus = DisplayStatus(currentTime)
     }
 
     @Test
     fun dueDate_itemOverDue_statusUrgent() {
         val item = getTestDataItemDueDate()
         item.completion = convertTimeToMillis("2020/10/10 00:10:10")
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasUrgentStatus()).isTrue()
     }
@@ -45,7 +45,7 @@ class DisplayStatusTest  {
         val item = getTestDataItemDueDate()
         val statusAtStart = item.status
         item.completion = convertTimeToMillis("2020/10/10 10:10:20")
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(statusAtStart).isEqualTo(item.status)
     }
@@ -57,7 +57,7 @@ class DisplayStatusTest  {
         val item = getTestDataItemRepeat()
         println("status: ${item.status}")
         item.repeatStart = convertTimeToMillis("2020/10/11 00:00:00")
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasInactiveStatus()).isTrue()
     }
@@ -70,7 +70,7 @@ class DisplayStatusTest  {
 
         item.completedTime = convertTimeToMillis("2020/10/09 10:10:10")
         item.repeat = "5_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasCompletedStatus()).isTrue()
     }
@@ -82,7 +82,7 @@ class DisplayStatusTest  {
         item.repeatStart = convertTimeToMillis("2020/10/08 10:10:10")
         item.completedTime = convertTimeToMillis("2020/10/09 10:10:10")
         item.repeat = "2_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -94,7 +94,7 @@ class DisplayStatusTest  {
         item.repeatStart = convertTimeToMillis("2020/10/08 10:10:10")
         item.completedTime = convertTimeToMillis("2020/10/07 10:10:10")
         item.repeat = "2_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasUrgentStatus()).isTrue()
     }
@@ -106,7 +106,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/09 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/10 10:10:10")
         item.repeat = "2_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -117,7 +117,7 @@ class DisplayStatusTest  {
         item.setInProgressStatus()
         item.repeatStart = convertTimeToMillis("2020/10/10 10:10:10")
         item.repeat = "2_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasInProgressStatus()).isTrue()
     }
@@ -130,7 +130,7 @@ class DisplayStatusTest  {
         item.repeatStart = convertTimeToMillis("2020/10/08 10:10:10")
         item.completedTime = convertTimeToMillis("2020/10/07 10:10:10")
         item.repeat = "2_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -144,7 +144,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/04 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/05 10:10:10")
         item.repeat = "5_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasUrgentStatus()).isTrue()
     }
@@ -157,7 +157,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/04 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/05 10:10:10")
         item.repeat = "5_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -172,7 +172,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeat = "10_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -183,7 +183,7 @@ class DisplayStatusTest  {
         val item = getTestDataItemRepeatAfter()
         println("status: ${item.status}")
         item.repeatStart = convertTimeToMillis("2020/10/11 00:00:00")
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasInactiveStatus()).isTrue()
     }
@@ -196,7 +196,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeat = "10_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -209,7 +209,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/07 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeat = "10_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasInProgressStatus()).isTrue()
     }
@@ -222,7 +222,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/03 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/01 10:10:10")
         item.repeat = "10_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasStartedStatus()).isTrue()
     }
@@ -235,7 +235,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/09/26 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/09/25 10:10:10")
         item.repeat = "14_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasUrgentStatus()).isTrue()
     }
@@ -249,7 +249,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/03 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/02 10:10:10")
         item.repeat = "5_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasNewStatus()).isTrue()
     }
@@ -263,7 +263,7 @@ class DisplayStatusTest  {
         item.completedTime = convertTimeToMillis("2020/10/03 10:10:10")
         item.repeatStart = convertTimeToMillis("2020/10/02 10:10:10")
         item.repeat = "5_day"
-        item.status = SUT.calculate(item)
+        item.status = displayStatus.calculate(item)
         println("status: ${item.status}")
         assertThat(item.hasUrgentStatus()).isTrue()
     }
@@ -275,7 +275,7 @@ class DisplayStatusTest  {
         val item = getTestDataItem()
         item.completionType = COMPLETION_TYPE_NO_DATE
         val status = item.status
-        SUT.calculate(item)
+        displayStatus.calculate(item)
         assertThat(status).isEqualTo(item.status)
     }
 

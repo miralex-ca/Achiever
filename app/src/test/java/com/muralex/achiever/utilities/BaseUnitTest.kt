@@ -1,4 +1,4 @@
-package com.muralex.achiever.utils
+package com.muralex.achiever.utilities
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule

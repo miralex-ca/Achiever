@@ -1,17 +1,20 @@
 package com.muralex.achiever.presentation.fragments.archive
 
 import com.google.common.truth.Truth.assertThat
+import com.muralex.achiever.data.models.datamodels.DataItemAndGroup
 import com.muralex.achiever.data.models.datamodels.Group
 import com.muralex.achiever.data.models.mappers.CurrentTime
+import com.muralex.achiever.data.models.mappers.PinnedItemsMapperTest
 import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.domain.group_usecases.GetArchivedGroupsListUseCase
 import com.muralex.achiever.domain.group_usecases.UpdateGroupUseCase
 import com.muralex.achiever.presentation.utils.Constants
 import com.muralex.achiever.presentation.utils.Constants.GROUP_LIST_LEFT_BEFORE_ADD
 import com.muralex.achiever.presentation.utils.Constants.TASK_LIST_START_COUNT
-import com.muralex.achiever.utils.BaseUnitTest
-import com.muralex.achiever.utils.BaseUnitTest.MockitoHelper.capture
-import com.muralex.achiever.utils.getOrAwaitValueTest
+import com.muralex.achiever.utilities.BaseUnitTest
+import com.muralex.achiever.utilities.BaseUnitTest.MockitoHelper.capture
+import com.muralex.achiever.utilities.TestDoubles
+import com.muralex.achiever.utilities.getOrAwaitValueTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
@@ -101,9 +104,8 @@ class ArchiveViewModelTest : BaseUnitTest() {
     }
 
     private companion object {
-        private const val testGroupId = "group_id"
-        val testGroup  =  Group(testGroupId, "", "", "", 0, 0, 0)
-        val testGroupData = GroupData(testGroup)
+        val testGroup  =  TestDoubles.testGroup
+        val testGroupData = TestDoubles.testGroupData
         const val testCurrentTime : Long = 20
     }
 

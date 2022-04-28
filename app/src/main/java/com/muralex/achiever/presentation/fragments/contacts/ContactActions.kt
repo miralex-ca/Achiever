@@ -7,6 +7,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.core.app.ShareCompat
 import com.muralex.achiever.R
+import com.muralex.achiever.presentation.utils.Constants.CONTACT_EMAIL
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
@@ -33,7 +34,7 @@ class ContactActions @Inject constructor(
 
     private fun sendEmail() {
         val i = Intent(Intent.ACTION_SENDTO)
-        val mailto = "mailto:" + "" +
+        val mailto = "mailto:" + CONTACT_EMAIL +
                 "?subject=" + Uri.encode("") +
                 "&body=" + Uri.encode("")
         i.data = Uri.parse(mailto)

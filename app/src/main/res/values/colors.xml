@@ -16,6 +16,9 @@
     <color name="primaryColor">#53C5F8</color>
     <color name="primaryLightColor">#66CEFD</color>
     <color name="primaryDarkColor">#2DAFEA</color>
+    <!-- navbar-->
+    <color name="nav_bar_start">#2DAFEA</color>
+    <color name="nav_bar_end">#66CEFD</color>
     <!-- accents-->
     <color name="secondaryColor">#00B0FF</color>
     <color name="secondaryLightColor">#3ABFFA</color>

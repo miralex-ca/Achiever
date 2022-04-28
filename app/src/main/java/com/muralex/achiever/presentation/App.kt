@@ -42,10 +42,8 @@ class App :  Application(), Configuration.Provider {
                 NotificationManager.IMPORTANCE_DEFAULT,  NOTIFICATION_CHANNEL_NAME, NOTIFICATION_CHANNEL_DESC )
         }
 
-        checkAlarmsAfterReboot(applicationContext)
-
-//        val alarms = OneTimeWorkRequestBuilder<InitAlarmScheduleWorker>().build()
-//        WorkManager.getInstance(applicationContext).enqueue(alarms)
+        val alarms = OneTimeWorkRequestBuilder<InitAlarmScheduleWorker>().build()
+        WorkManager.getInstance(applicationContext).enqueue(alarms)
 
     }
 

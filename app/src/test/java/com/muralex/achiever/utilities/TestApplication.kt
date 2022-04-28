@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.muralex.achiever.utils
+package com.muralex.achiever.utilities
 
 import android.app.Application
 import com.muralex.achiever.R

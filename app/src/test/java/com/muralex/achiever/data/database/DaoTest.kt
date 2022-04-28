@@ -4,10 +4,9 @@ import androidx.arch.core.executor.testing.CountingTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.muralex.achiever.data.models.datamodels.DataItem
-import com.muralex.achiever.utils.MainCoroutineScopeRule
-import junit.framework.Assert
+import com.muralex.achiever.utilities.MainCoroutineScopeRule
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -49,29 +48,22 @@ class DaoTest {
     fun closeDb() {
         appDatabase.close()
         countingTaskExecutorRule.drainTasks(1, TimeUnit.SECONDS)
-        Truth.assertThat(countingTaskExecutorRule.isIdle).isTrue()
+        assertThat(countingTaskExecutorRule.isIdle).isTrue()
     }
 
     @Test
     fun getTasks_WhenNoTaskInserted() = runBlocking {
         val tasks = taskDao.getAllGroups().first()
-        Truth.assertThat(tasks).isEmpty()
+        assertThat(tasks).isEmpty()
     }
 
     @Test
     @Throws(Exception::class)
     fun writeUserAndReadInList() = runBlocking {
-
         val item = DataItem("id", "", "")
         taskDao.insert(item)
-
         val data = taskDao.getItemById("id").first()
-
-        // dao.getItemById("id").first()
-        //assertThat(data?.id, "id")
-
-        Assert.assertEquals("id", data.id)
-
+        assertThat("id").isEqualTo(data.id)
 
     }
 
