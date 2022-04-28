@@ -104,8 +104,8 @@ object AlarmScheduler {
         if (!shouldNotifyToday(datetimeToAlarm)) datetimeToAlarm.roll(Calendar.DAY_OF_WEEK, 1)
         setAlarm(alarmMgr, datetimeToAlarm, alarmIntent)
 
-        val dateFormat = SimpleDateFormat("yyyy.MM.dd, HH:mm:ss")
-        Timber.d("notify time: ${ dateFormat.format(datetimeToAlarm.timeInMillis)}")
+//        val dateFormat = SimpleDateFormat("yyyy.MM.dd, HH:mm:ss")
+//        Timber.d("notify time: ${ dateFormat.format(datetimeToAlarm.timeInMillis)}")
 //        alarmMgr.setExact(AlarmManager.RTC_WAKEUP, datetimeToAlarm.timeInMillis, alarmIntent)
 
     }
