@@ -18,11 +18,9 @@ class DataRepositoryImpl(
     private val groupStatsDataMapper: GroupStatsDataMapper,
     private val pinnedItemsMapper: PinnedItemsMapper,
     private val searchItemMapper: SearchItemMapper
-
     ) : DataRepository {
 
     override fun getGroupsList(): Flow<List<GroupData>> {
-
         return dao.getAllGroups().map {
             it.map { group ->
                 val data = GroupDataMapper().invoke(group.group)

@@ -63,7 +63,6 @@ interface DataItemDao {
     @Query("SELECT * from data_table WHERE dataitem_pinned > 0")
     fun getPinnedItems(): Flow<List<DataItem>>
 
-
     @Transaction
     @RewriteQueriesToDropUnusedColumns
     @Query("SELECT * from data_table a left join group_table b ON a.group_id = b.group_id WHERE b.group_id IS NOT NULL AND ( a.dataitem_title LIKE '%'||:query||'%' " +

@@ -15,9 +15,7 @@ import com.muralex.achiever.presentation.utils.Constants.DATABASE_NAME
 
 @Database(entities = [Group::class, DataItem::class], version = 3,  exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
     abstract val dataItemDAO: DataItemDao
-
     companion object {
         @Volatile private var instance: AppDatabase? = null
         fun getInstance(context: Context): AppDatabase {
@@ -27,19 +25,16 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): AppDatabase {
-
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
                 .addMigrations(MIGRATION_2_3)
                 .addCallback(
                     object : RoomDatabase.Callback() {
-
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
                             prepopulate(context)
                         }
                     }
                 )
-                .fallbackToDestructiveMigration()
                 .build()
         }
     }

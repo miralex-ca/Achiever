@@ -1,6 +1,5 @@
 package com.muralex.achiever.domain
 
-
 import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.data.models.datamodels.Group
 import com.muralex.achiever.data.models.usemodels.GroupData
@@ -8,7 +7,6 @@ import com.muralex.achiever.data.models.usemodels.GroupWithItemsInGroup
 import com.muralex.achiever.data.models.usemodels.PinnedItem
 import com.muralex.achiever.data.models.usemodels.SearchItem
 import kotlinx.coroutines.flow.Flow
-
 
 interface DataRepository {
     fun getGroupsList() : Flow<List<GroupData>>

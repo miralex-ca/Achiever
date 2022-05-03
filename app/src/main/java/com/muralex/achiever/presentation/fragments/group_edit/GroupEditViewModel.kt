@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 
 import com.muralex.achiever.data.models.datamodels.Group
 import com.muralex.achiever.R
+import com.muralex.achiever.data.models.mappers.CurrentTime
 import com.muralex.achiever.data.models.usemodels.GroupWithItemsInGroup
 import com.muralex.achiever.domain.group_usecases.*
 
@@ -27,7 +28,8 @@ class GroupEditViewModel @Inject constructor (
     private val getGroupWithItemsUseCase: GetGroupWithItemsUseCase,
     private val createGroupUseCase: CreateGroupUseCase,
     private val updateGroupUseCase: UpdateGroupUseCase,
-    private val deleteGroupUseCase: DeleteGroupUseCase
+    private val deleteGroupUseCase: DeleteGroupUseCase,
+    private val currentTime: CurrentTime
 ) : ViewModel() {
 
     private var savedGroupAndItems: GroupWithItemsInGroup? = null
@@ -43,7 +45,6 @@ class GroupEditViewModel @Inject constructor (
     val formProgressDisplay = MutableLiveData<Int>()
 
     val isDataChanged = MutableLiveData<Boolean>()
-
     val isCreated = MutableLiveData<Boolean>().apply { value = true }
 
     private val titleLimit = GROUP_TITLE_LIMIT
@@ -61,14 +62,12 @@ class GroupEditViewModel @Inject constructor (
         if (id == ITEM_NEW_LIST_ID) {
             _isNewItem = true
             isCreated.value = false
-            val newId = System.currentTimeMillis().toString()
+            val newId = currentTime.getMillis().toString()
             _newGroupId = newId
             val data = Group(newId, "", "", SAMPLE_IMAGE)
-
             onItemLoaded(data)
 
         } else {
-
             viewModelScope.launch {
                 getGroupWithItemsUseCase.execute(id).collect {
                     it?.let {
@@ -186,7 +185,7 @@ class GroupEditViewModel @Inject constructor (
 
     private fun validateFields(title: String, text: String): Boolean {
         val invalidFields = arrayListOf<Pair<String, Int>>()
-        if (TextUtils.isEmpty(title)) invalidFields.add(INPUT_ITEM_TITLE_EMPTY)
+        if (title.trim().isEmpty()) invalidFields.add(INPUT_ITEM_TITLE_EMPTY)
         if (title.length > titleLimit) invalidFields.add(INPUT_ITEM_TITLE_LONG)
 
         if (text.length > textLimit) invalidFields.add(INPUT_ITEM_DESC)

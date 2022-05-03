@@ -1,7 +1,6 @@
-package com.muralex.achiever.presentation.di
+package com.muralex.achiever.di
 
 import android.content.Context
-import com.example.noter.domain.usecases.GetItemUseCase
 import com.muralex.achiever.data.database.AppDatabase
 import com.muralex.achiever.data.database.DataItemDao
 import com.muralex.achiever.data.models.mappers.GroupStatsDataMapper
@@ -10,8 +9,6 @@ import com.muralex.achiever.data.models.mappers.PinnedItemsMapper
 import com.muralex.achiever.data.models.mappers.SearchItemMapper
 import com.muralex.achiever.data.repository.DataRepositoryImpl
 import com.muralex.achiever.domain.DataRepository
-import com.muralex.achiever.domain.group_usecases.GetGroupsListUseCase
-import com.muralex.achiever.notifications.NotifyWorker
 import com.muralex.achiever.presentation.activities.search_images.image_api.RetrofitAPI
 import com.muralex.achiever.presentation.utils.Constants.BASE_URL
 import dagger.Module

@@ -52,10 +52,7 @@ class EditViewModel @Inject constructor(
         get() = _isNewItem
 
     val isCreated = MutableLiveData<Boolean>().apply { value = false }
-
     val newItemCreated = MutableLiveData<Boolean>().apply { value = false }
-
-
     private var dataLoaded = false
 
     val formTitle = MutableLiveData<String>()
@@ -68,10 +65,8 @@ class EditViewModel @Inject constructor(
 
     val formStatusMode = MutableLiveData<String>()
     val formCompletionType = MutableLiveData<String>()
-
     val formRepeat = MutableLiveData<String>()
     val isDataChanged = MutableLiveData<Boolean>()
-
     val displayAutoStatus = MutableLiveData<String>()
 
     val titleLimit = ITEM_TITLE_LIMIT
@@ -228,7 +223,7 @@ class EditViewModel @Inject constructor(
 
     fun updateItemStatus(status: String) {
 
-        if (status == ITEM_STATUS[5]) formCompletedDate.value = System.currentTimeMillis()
+        if (status == ITEM_STATUS[5]) formCompletedDate.value = currentTime.getMillis()
         else {
             formCompletedDate.value  = 0
             savedItem?.let {
@@ -258,7 +253,7 @@ class EditViewModel @Inject constructor(
     private fun validateFields(title: String, desc: String, text: String): Boolean {
         val invalidFields = arrayListOf<Pair<String, Int>>()
 
-        if (TextUtils.isEmpty(title)) invalidFields.add(INPUT_ITEM_TITLE_EMPTY)
+        if (title.trim().isEmpty()) invalidFields.add(INPUT_ITEM_TITLE_EMPTY)
         if (title.length > titleLimit) invalidFields.add(INPUT_ITEM_TITLE_LONG)
 
         if (desc.length > descLimit) invalidFields.add(INPUT_ITEM_DESC)
@@ -315,7 +310,6 @@ class EditViewModel @Inject constructor(
         val INPUT_ITEM_TITLE = "INPUT_ITEM_TITLE" to R.string.invalid_item_title
         val INPUT_ITEM_DESC = "INPUT_ITEM_DESC" to R.string.invalid_item_desc
         val INPUT_ITEM_TEXT = "INPUT_ITEM_TEXT" to R.string.invalid_item_text
-
         val INPUT_ITEM_TITLE_EMPTY = INPUT_ITEM_TITLE.first to R.string.invalid_item_title_empty
         val INPUT_ITEM_TITLE_LONG = INPUT_ITEM_TITLE.first to R.string.invalid_item_title_long
     }

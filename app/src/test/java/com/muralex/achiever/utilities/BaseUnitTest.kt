@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Rule
 import org.mockito.ArgumentCaptor
 
+
 open class BaseUnitTest {
 
     @get:Rule
