@@ -19,7 +19,7 @@ import com.muralex.achiever.R
 import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.databinding.FragmentArchiveBinding
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback
-import com.muralex.achiever.presentation.components.GroupActionDialog
+import com.muralex.achiever.presentation.uicomponents.GroupActionDialog
 import com.muralex.achiever.presentation.utils.*
 import com.muralex.achiever.presentation.utils.Constants.Action
 import com.muralex.achiever.presentation.utils.Constants.ITEM_ID_KEY
@@ -67,16 +67,7 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
         listAdapter.setOnItemClickListener { action, groupData ->
-
-            if (action == Action.Click) openGroup(groupData)
-
-            if (action == Action.LongClick) groupActionDialog.openDialog(groupData) { groupAction, group ->
-                actionsFromDialog(groupAction, group)
-            }
-
-            if (action == Action.MenuClick) groupActionDialog.openDialog(groupData) { groupAction, group ->
-                actionsFromDialog(groupAction, group)
-            }
+            setClickEvents(action, groupData)
         }
 
         binding.rvArchiveList.layoutManager = LinearLayoutManager(requireContext())
@@ -89,6 +80,18 @@ class ArchiveFragment : Fragment(R.layout.fragment_archive) {
         loadListData()
     }
 
+    private fun setClickEvents(
+        action: Action,
+        groupData: GroupData,
+    ) {
+        if (action == Action.Click) openGroup(groupData)
+
+        if (action == Action.LongClick || action == Action.MenuClick) {
+            groupActionDialog.openDialog(groupData) { groupAction, group ->
+                actionsFromDialog(groupAction, group)
+            }
+        }
+    }
 
     private fun actionsFromDialog(action: Action, group: GroupData) {
         if (action == Action.MoveToTop) openMoveToTop(group)

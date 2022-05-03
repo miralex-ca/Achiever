@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components
+package com.muralex.achiever.presentation.uicomponents
 
 import android.content.Context
 import android.view.LayoutInflater

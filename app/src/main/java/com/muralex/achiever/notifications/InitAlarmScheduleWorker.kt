@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.muralex.achiever.notifications.AlarmScheduler.checkAlarmsAfterReboot
-import com.muralex.achiever.notifications.AlarmScheduler.initAlarmsOnInstall
 
 class InitAlarmScheduleWorker(
     val context: Context,

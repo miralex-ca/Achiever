@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components.dialog_statuspicker
+package com.muralex.achiever.presentation.uicomponents.dialog_statuspicker
 
 import android.content.Context
 import android.os.Handler
@@ -9,13 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.muralex.achiever.R
-import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.databinding.DialogStatusPickerBinding
-import com.muralex.achiever.presentation.utils.Constants
 import com.muralex.achiever.presentation.utils.Constants.ITEM_STATUS
-import com.muralex.achiever.presentation.utils.checkAutoHintDisplay
-import com.muralex.achiever.presentation.utils.gone
-import com.muralex.achiever.presentation.utils.visible
 
 open class StatusPickerDialog(private val context: Context) {
 

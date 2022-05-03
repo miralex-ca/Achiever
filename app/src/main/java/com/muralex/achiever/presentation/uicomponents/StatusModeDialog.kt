@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components
+package com.muralex.achiever.presentation.uicomponents
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.muralex.achiever.R
-import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.databinding.DialogStatusModeBinding
-import com.muralex.achiever.presentation.utils.checkAutoHintDisplay
 import com.muralex.achiever.presentation.utils.gone
 
 class StatusModeDialog (

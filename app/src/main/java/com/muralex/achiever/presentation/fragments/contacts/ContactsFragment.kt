@@ -20,10 +20,12 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnSendFeedback.setOnClickListener{contactActions.sendFeedback()}
-        binding.btnSendReport.setOnClickListener{contactActions.sendReport()}
-        binding.btnShare.setOnClickListener{contactActions.shareApp()}
-        binding.btnRate.setOnClickListener{contactActions.rateApp()}
+        binding.apply {
+            btnSendFeedback.setOnClickListener{contactActions.sendFeedback()}
+            btnSendReport.setOnClickListener{contactActions.sendReport()}
+            btnShare.setOnClickListener{contactActions.shareApp()}
+            btnRate.setOnClickListener{contactActions.rateApp()}
+        }
     }
 
 }

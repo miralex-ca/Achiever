@@ -21,15 +21,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.tasker.presentation.components.imagepicker.ImagePickerDialog
 import com.google.android.material.textfield.TextInputLayout
 import com.muralex.achiever.R
-import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.databinding.FragmentGroupEditBinding
 import com.muralex.achiever.presentation.activities.search_images.SearchImageResultCallback
-import com.muralex.achiever.presentation.components.ConfirmDialog
-import com.muralex.achiever.presentation.utils.Constants
+import com.muralex.achiever.presentation.uicomponents.ConfirmDialog
 import com.muralex.achiever.presentation.utils.Constants.ITEM_NEW_LIST_ID
 import com.muralex.achiever.presentation.utils.dataBindings
 import com.muralex.achiever.presentation.utils.displayIf
-import com.muralex.achiever.presentation.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -4,6 +4,9 @@ import androidx.lifecycle.*
 import com.example.tasker.domain.item_usecases.UpdateItemUseCase
 import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.data.models.datamodels.Group
+import com.muralex.achiever.data.models.datamodels.setCompletedStatus
+import com.muralex.achiever.data.models.datamodels.setNewStatus
+import com.muralex.achiever.data.models.mappers.CurrentTime
 import com.muralex.achiever.data.models.usemodels.ItemInGroup
 import com.muralex.achiever.domain.group_usecases.GetGroupWithItemsUseCase
 import com.muralex.achiever.domain.group_usecases.UpdateGroupUseCase
@@ -26,7 +29,8 @@ class GroupDetailViewModel @Inject constructor(
     private val getGroupWithItemsUseCase: GetGroupWithItemsUseCase,
     private val updateItemUseCase: UpdateItemUseCase,
     private val deleteItemUseCase: DeleteItemUseCase,
-    private val updateGroupUseCase: UpdateGroupUseCase
+    private val updateGroupUseCase: UpdateGroupUseCase,
+    private val currentTime: CurrentTime
     ) : ViewModel() {
 
     private lateinit var groupId: String
@@ -73,10 +77,10 @@ class GroupDetailViewModel @Inject constructor(
     fun checkTodo(item: ItemInGroup) {
         val data = item.data.copy()
         if (item.displayStatus == ITEM_STATUS[5]) {
-            data.status = ITEM_STATUS[0]
+            data.setNewStatus()
         } else  {
-            data.status = ITEM_STATUS[5]
-            data.completedTime = System.currentTimeMillis()
+            data.setCompletedStatus()
+            data.completedTime = currentTime.getMillis()
         }
         updateItem(data)
     }
@@ -91,12 +95,11 @@ class GroupDetailViewModel @Inject constructor(
         val archiveIndex = if (action == Action.Unarchive) 0 else 1
         viewModelScope.launch {
             groupItem?.let {
-                val data = it.copy(archived = archiveIndex, sort = System.currentTimeMillis())
+                val data = it.copy(archived = archiveIndex, sort = currentTime.getMillis())
                 updateGroupUseCase.invoke(data)
             }
         }
     }
-
 
     fun listIsArchived(): Boolean {
         var archived = false

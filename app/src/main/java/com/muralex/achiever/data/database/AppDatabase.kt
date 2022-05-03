@@ -10,7 +10,6 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.data.models.datamodels.Group
-import com.muralex.achiever.notifications.InitAlarmScheduleWorker
 import com.muralex.achiever.presentation.utils.Constants.DATABASE_NAME
 
 

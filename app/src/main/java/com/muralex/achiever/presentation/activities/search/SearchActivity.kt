@@ -22,8 +22,8 @@ import com.muralex.achiever.presentation.activities.search.SearchResultCallback.
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback.Companion.SEARCH_GROUP_RESULT_EXTRA
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback.Companion.SEARCH_ITEM_RESULT_EXTRA
 import com.muralex.achiever.presentation.activities.search.SearchViewModel.Companion.PAGE_SIZE
-import com.muralex.achiever.presentation.components.ConfirmDialog
-import com.muralex.achiever.presentation.components.dialog_item_actions.ItemActionDialog
+import com.muralex.achiever.presentation.uicomponents.ConfirmDialog
+import com.muralex.achiever.presentation.uicomponents.dialog_item_actions.ItemActionDialog
 import com.muralex.achiever.presentation.utils.Constants.Action
 import com.muralex.achiever.presentation.utils.displayIf
 import com.muralex.achiever.presentation.utils.safeSlice

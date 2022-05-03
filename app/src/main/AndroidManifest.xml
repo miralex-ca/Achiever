@@ -16,7 +16,7 @@
 
         <receiver
             android:name=".notifications.AlarmReceiver"
-            android:exported="false"></receiver>
+            android:exported="false" />
 
         <receiver
             android:name=".notifications.UpdateReceiver"

@@ -3,20 +3,13 @@ package com.muralex.achiever.notifications
 import android.content.Context
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
-import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.muralex.achiever.R
 import com.muralex.achiever.data.models.usemodels.GroupData
 import com.muralex.achiever.domain.group_usecases.GetGroupsListUseCase
-import com.muralex.achiever.notifications.AlarmScheduler.initAlarmsOnInstall
-import com.muralex.achiever.presentation.components.ConfirmDialog
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
 @HiltWorker
 class NotifyWorker @AssistedInject constructor(

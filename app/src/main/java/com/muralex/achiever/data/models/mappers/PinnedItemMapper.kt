@@ -3,6 +3,7 @@ package com.muralex.achiever.data.models.mappers
 import com.muralex.achiever.data.models.datamodels.DataItemAndGroup
 import com.muralex.achiever.data.models.usemodels.PinnedItem
 import com.muralex.achiever.presentation.utils.convertStatusToInt
+import com.muralex.achiever.presentation.utils.removeLineBreaks
 import javax.inject.Inject
 
 class PinnedItemsMapper @Inject constructor(
@@ -13,12 +14,11 @@ class PinnedItemsMapper @Inject constructor(
 
         return itemsList.map {
             val currentStatus = displayStatus.calculate(it.dataItem)
-
             PinnedItem(
                 it.dataItem.id,
-                it.dataItem.title,
+                removeLineBreaks(it.dataItem.title),
                 it.group.image!!,
-                it.group.title,
+                removeLineBreaks(it.group.title),
                 convertStatusToInt(it.dataItem.status),
                 currentStatus,
                 it.dataItem,

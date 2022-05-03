@@ -34,7 +34,6 @@ import java.text.DateFormat
 @BindingAdapter("setImageSource")
 fun ImageView.setImageSource(imageUrl: String?) {
     imageUrl?.let {
-        //val requestOptions = RequestOptions().transform(CenterCrop(), RoundedCorners(15))
         val requestOptions = RequestOptions().transform(CenterCrop(), CircleCrop())
 
             Glide.with(context)
@@ -129,15 +128,16 @@ fun TextView.setGroupTotalProgressText(groupData: GroupData) {
             )
         }
     }
-
-
 }
 
 @BindingAdapter("setTexNoLine")
 fun TextView.setTexNoLine(textToCheck: String?) {
-    val string = textToCheck?.replace("\n"," ")
-    text = string
+     textToCheck?.let {
+         text = removeLineBreaks(it)
+     }
 }
+
+fun removeLineBreaks(text: String) = text.replace("\n"," ")
 
 @BindingAdapter("setPinActionButton")
 fun MaterialButton.setPinActionButton(item: DataItem?) {

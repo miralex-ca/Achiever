@@ -86,6 +86,7 @@ class ArchiveViewModelTest : BaseUnitTest() {
     fun updateGroupArchivedAndSortTimeIfChangesArchived() = runTest {
         val argument: ArgumentCaptor<Group> = ArgumentCaptor.forClass(Group::class.java)
         mockSuccessfulCase()
+
         archiveViewModel.unarchiveGroup(testGroup)
         verify(updateGroupUseCase, times(1)).invoke(capture(argument))
         assertThat(argument.value.archived).isEqualTo(0)

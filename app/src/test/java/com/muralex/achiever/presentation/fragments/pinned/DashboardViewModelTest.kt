@@ -66,7 +66,6 @@ class DashboardViewModelTest : BaseUnitTest()   {
                 emit(expected)
             }
         )
-
         dashboardViewModel = DashboardViewModel(getPinnedItemsUseCase, updateItemUseCase,deleteItemUseCase)
     }
 

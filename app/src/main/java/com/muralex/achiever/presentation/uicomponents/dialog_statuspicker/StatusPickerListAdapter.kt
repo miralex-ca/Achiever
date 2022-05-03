@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components.dialog_statuspicker
+package com.muralex.achiever.presentation.uicomponents.dialog_statuspicker
 
 import android.view.LayoutInflater
 import android.view.View

@@ -82,7 +82,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:foreground="?attr/selectableItemBackground"
-            android:id="@+id/home_card_wrap"
+            android:id="@+id/item_card_wrap"
             android:clickable="true"
             android:focusable="true"
             android:layout_width="match_parent"
@@ -131,10 +131,7 @@
                         android:id="@+id/iv_item_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
                         android:contentDescription="Image"
-                        android:focusable="true"
                         />
 
                 </com.google.android.material.card.MaterialCardView>
@@ -206,7 +203,6 @@
 
             <ImageView
                 android:alpha="0.8"
-                android:visibility="invisible"
                 android:id="@+id/iv_pinned"
                 android:layout_width="16dp"
                 android:layout_height="16dp"

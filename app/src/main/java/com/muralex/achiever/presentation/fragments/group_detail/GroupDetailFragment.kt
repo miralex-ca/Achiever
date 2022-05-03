@@ -1,8 +1,6 @@
 package com.muralex.achiever.presentation.fragments.group_detail
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -13,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.muralex.achiever.R
@@ -21,9 +18,10 @@ import com.muralex.achiever.data.models.datamodels.DataItem
 import com.muralex.achiever.data.models.datamodels.Group
 import com.muralex.achiever.data.models.usemodels.ItemInGroup
 import com.muralex.achiever.databinding.FragmentGroupDetailBinding
-import com.muralex.achiever.presentation.components.ConfirmDialog
-import com.muralex.achiever.presentation.components.dialog_item_actions.ItemActionDialog
+import com.muralex.achiever.presentation.uicomponents.ConfirmDialog
+import com.muralex.achiever.presentation.uicomponents.dialog_item_actions.ItemActionDialog
 import com.muralex.achiever.presentation.utils.Constants.Action
+import com.muralex.achiever.presentation.utils.Constants.ITEM_ID_KEY
 import com.muralex.achiever.presentation.utils.SettingsHelper
 import com.muralex.achiever.presentation.utils.dataBindings
 import com.muralex.achiever.presentation.utils.safeSlice
@@ -41,6 +39,9 @@ class GroupDetailFragment : Fragment(R.layout.fragment_group_detail) {
     @Inject
     lateinit var confirmDialog: ConfirmDialog
     @Inject
+    lateinit var itemActionDialog: ItemActionDialog
+
+    @Inject
     lateinit var settings: SettingsHelper
 
     private lateinit var listAdapter: ItemsListAdapter
@@ -57,7 +58,7 @@ class GroupDetailFragment : Fragment(R.layout.fragment_group_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.root
-        itemId = requireArguments().getString("item", "1")
+        itemId = requireArguments().getString(ITEM_ID_KEY, "1")
         viewModel.setGroupId(itemId)
         initRecyclerView()
         setHasOptionsMenu(true)
@@ -81,17 +82,15 @@ class GroupDetailFragment : Fragment(R.layout.fragment_group_detail) {
         binding.rvItemsList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvItemsList.addOnScrollListener(this@GroupDetailFragment.onScrollListener)
         binding.rvItemsList.adapter = listAdapter
-
         binding.rvItemsList.itemAnimator = ItemAnimator()
 
         loadListData()
     }
 
     private fun openActionsDialog(item: ItemInGroup) {
-
-        ItemActionDialog(requireContext())
-            .openDialog(item.data, item.displayStatus ) { action: Action, reterneditem: DataItem ->
-                callBackFromStatusDialog(action, reterneditem)
+        itemActionDialog
+            .openDialog(item.data, item.displayStatus ) { action: Action, returnedItem: DataItem ->
+                callBackFromStatusDialog(action, returnedItem)
             }
     }
 
@@ -102,9 +101,10 @@ class GroupDetailFragment : Fragment(R.layout.fragment_group_detail) {
         if (action == Action.Pin) changePin(item)
 
         if (action == Action.Delete) {
-            Handler(Looper.myLooper()!!).postDelayed({
+            lifecycleScope.launch {
+                delay(100)
                 deleteTask(item)
-            }, 100)
+            }
         }
     }
 

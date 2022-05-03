@@ -41,7 +41,7 @@ class ContactActions @Inject constructor(
         try {
             context.startActivity(Intent.createChooser(i, ""))
         } catch (ex: ActivityNotFoundException) {
-            Toast.makeText(context, "No mail client", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.no_mail_client), Toast.LENGTH_SHORT).show()
         }
     }
 

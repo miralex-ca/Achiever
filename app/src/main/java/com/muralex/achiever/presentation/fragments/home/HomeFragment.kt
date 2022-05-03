@@ -21,13 +21,11 @@ import com.muralex.achiever.databinding.FragmentHomeBinding
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback.Companion.SEARCH_FAILED
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback.Companion.SEARCH_GROUP_RESULT_EXTRA
-import com.muralex.achiever.presentation.components.GroupActionDialog
+import com.muralex.achiever.presentation.uicomponents.GroupActionDialog
+import com.muralex.achiever.presentation.utils.*
 import com.muralex.achiever.presentation.utils.Constants.Action
 import com.muralex.achiever.presentation.utils.Constants.ITEM_ID_KEY
-import com.muralex.achiever.presentation.utils.SettingsHelper
-import com.muralex.achiever.presentation.utils.dataBindings
-import com.muralex.achiever.presentation.utils.displayIf
-import com.muralex.achiever.presentation.utils.safeSlice
+import com.muralex.achiever.presentation.utils.Constants.ITEM_NEW_LIST_ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -41,6 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     @Inject
     lateinit var groupActionDialog: GroupActionDialog
+
     @Inject
     lateinit var settings: SettingsHelper
 
@@ -70,13 +69,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
 
         listAdapter.setOnItemClickListener { action, groupData ->
-            if (action == Action.Click) openGroup(groupData)
-            if (action == Action.LongClick) groupActionDialog.openDialog(groupData) { groupAction, group ->
-                actionsFromDialog(groupAction, group)
-            }
-            if (action == Action.MenuClick) groupActionDialog.openDialog(groupData) { groupAction, group ->
-                actionsFromDialog(groupAction, group)
-            }
+            setClickEvents(action, groupData)
         }
 
         binding.rvHomeList.layoutManager = LinearLayoutManager(requireContext())
@@ -88,6 +81,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         loadListData()
+    }
+
+    private fun setClickEvents(
+        action: Action,
+        groupData: GroupData,
+    ) {
+        if (action == Action.Click) openGroup(groupData)
+
+        if (action == Action.LongClick || action == Action.MenuClick) {
+            groupActionDialog.openDialog(groupData) { groupAction, group ->
+                actionsFromDialog(groupAction, group)
+            }
+        }
     }
 
     private fun actionsFromDialog(action: Action, group: GroupData) {
@@ -161,7 +167,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun createGroup() {
-        val bundle = bundleOf("item" to "new")
+        val bundle = bundleOf(ITEM_ID_KEY to ITEM_NEW_LIST_ID)
         findNavController().navigate(R.id.action_nav_home_to_groupEditFragment, bundle)
     }
 
@@ -267,11 +273,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 val swipeArchive: View = viewHolder.swipeArchiveRight
 
                 if (dX < 0) {
-                    swipeClearHome.visibility = View.GONE
-                    swipeArchive.visibility = View.VISIBLE
+                    swipeClearHome.gone()
+                    swipeArchive.visible()
                 } else {
-                    swipeClearHome.visibility = View.VISIBLE
-                    swipeArchive.visibility = View.GONE
+                    swipeClearHome.visible()
+                    swipeArchive.gone()
                 }
 
                 val foregroundView: View = viewHolder.viewForeground

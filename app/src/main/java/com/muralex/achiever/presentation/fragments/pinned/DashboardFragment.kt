@@ -23,8 +23,8 @@ import com.muralex.achiever.data.models.datamodels.Group
 import com.muralex.achiever.data.models.usemodels.PinnedItem
 import com.muralex.achiever.databinding.FragmentDashboardBinding
 import com.muralex.achiever.presentation.activities.search.SearchResultCallback
-import com.muralex.achiever.presentation.components.ConfirmDialog
-import com.muralex.achiever.presentation.components.dialog_item_actions.ItemActionDialog
+import com.muralex.achiever.presentation.uicomponents.ConfirmDialog
+import com.muralex.achiever.presentation.uicomponents.dialog_item_actions.ItemActionDialog
 import com.muralex.achiever.presentation.utils.*
 import com.muralex.achiever.presentation.utils.Constants.Action
 import dagger.hilt.android.AndroidEntryPoint
@@ -208,21 +208,15 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
             val layoutPosition = viewHolder.layoutPosition
             val pinnedItem  = allDataList[layoutPosition]
-
             changePin( pinnedItem.data )
-
         }
-
 
         override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
             if (viewHolder != null) {
-
                 val foregroundView: View =   (viewHolder as PinnedItemsListAdapter.ViewHolder).viewForeground
-
-                getDefaultUIUtil().onSelected(foregroundView)
+                 getDefaultUIUtil().onSelected(foregroundView)
             }
         }
 
@@ -236,7 +230,6 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                 actionState, isCurrentlyActive
             )
         }
-
 
         override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
             //super.clearView(recyclerView, viewHolder)
@@ -272,9 +265,7 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
                 c, recyclerView, foregroundView, dX, dY,
                 actionState, isCurrentlyActive
             )
-
         }
-
     }
 
 

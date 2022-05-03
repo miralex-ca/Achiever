@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components
+package com.muralex.achiever.presentation.uicomponents
 
 import android.content.Context
 import android.os.Handler
@@ -6,8 +6,6 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.muralex.achiever.R

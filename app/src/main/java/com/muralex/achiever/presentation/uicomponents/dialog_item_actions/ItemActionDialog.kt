@@ -1,4 +1,4 @@
-package com.muralex.achiever.presentation.components.dialog_item_actions
+package com.muralex.achiever.presentation.uicomponents.dialog_item_actions
 
 import android.content.Context
 import android.os.Handler

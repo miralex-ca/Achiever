@@ -18,10 +18,6 @@ object AlarmScheduler {
 
     private const val ALARM_REQUEST_CODE = 100
 
-    fun initAlarmsOnInstall(context: Context) {
-        scheduleAlarmsForReminder(context)
-    }
-
     fun checkAlarmsAfterReboot(context: Context) {
         recheckAlarms(context)
     }
@@ -51,8 +47,7 @@ object AlarmScheduler {
     }
 
     private fun recheckAlarms(context: Context) {
-        val notificationAreEnabled = notificationsAreEnabled(context)
-        if (notificationAreEnabled) {
+        if (notificationsAreEnabled(context)) {
             scheduleAlarmsForReminder(context)
         }
     }
@@ -101,12 +96,11 @@ object AlarmScheduler {
         hour: Int,
     ) {
         val datetimeToAlarm = getAlarmDate(hour)
-        if (!shouldNotifyToday(datetimeToAlarm)) datetimeToAlarm.roll(Calendar.DAY_OF_WEEK, 1)
+        if (!shouldNotifyToday(datetimeToAlarm)) datetimeToAlarm.add(Calendar.DATE, 1)
         setAlarm(alarmMgr, datetimeToAlarm, alarmIntent)
 
 //        val dateFormat = SimpleDateFormat("yyyy.MM.dd, HH:mm:ss")
 //        Timber.d("notify time: ${ dateFormat.format(datetimeToAlarm.timeInMillis)}")
-//        alarmMgr.setExact(AlarmManager.RTC_WAKEUP, datetimeToAlarm.timeInMillis, alarmIntent)
 
     }
 

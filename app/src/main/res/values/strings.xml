@@ -123,6 +123,7 @@
     <string name="task_edit_auto_update_hint">* Status auto update is enabled, it may differ from manually selected.</string>
     <string name="task_edit_status_auto_mode_hint">Auto update is enabled, current status:</string>
     <string name="check_net_work">Check your network connection</string>
+    <string name="no_mail_client">No mail client</string>
 
 
 </resources>

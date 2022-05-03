@@ -7,14 +7,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.muralex.achiever.data.models.datamodels.showProgress
 import com.muralex.achiever.data.models.usemodels.GroupData
-import com.muralex.achiever.databinding.HomeListItemBinding
 import com.muralex.achiever.databinding.ListItemArchiveBinding
 import com.muralex.achiever.presentation.utils.*
 import com.muralex.achiever.presentation.utils.Constants.Action
 
 class ArchiveListAdapter : ListAdapter<GroupData, ArchiveListAdapter.ViewHolder>(ArchiveListDiffCallBack()) {
 
-    class ViewHolder(private val binding: ListItemArchiveBinding) :
+    class ViewHolder(val binding: ListItemArchiveBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val viewForeground = binding.viewForeground
         val swipeArchiveLeft = binding.bgArchiveLeft
@@ -25,25 +24,36 @@ class ArchiveListAdapter : ListAdapter<GroupData, ArchiveListAdapter.ViewHolder>
             binding.tvNoteTitle.setTexNoLine(groupData.title)
             binding.ivNoteImage.setImageSource(groupData.group?.image)
 
-            binding.homeCardWrap.setOnClickListener {
-                onItemClickListener?.let {
-                    it(Action.Click, groupData)
-                }
+            setClickListeners(onItemClickListener, groupData)
+            setProgressInfo(groupData)
+            setSwipeInfo(groupData)
+            setAlertIndicators(groupData)
+        }
+
+        private fun setAlertIndicators(groupData: GroupData) {
+            if (groupData.urgentItems > 0) {
+                binding.cardUrgentIndicator.visible()
+                binding.cardUrgentIndicatorText.text = groupData.urgentItems.toString()
+            } else {
+                binding.cardUrgentIndicator.gone()
             }
 
-            binding.ivGroupMenu.setOnClickListener {
-                onItemClickListener?.let {
-                    it(Action.MenuClick, groupData)
-                }
+            if (groupData.todayItems > 0) {
+                binding.cardTodayIndicator.visible()
+                binding.cardTodayIndicatorText.text = groupData.todayItems.toString()
+            } else {
+                binding.cardTodayIndicator.gone()
             }
+        }
 
-            binding.homeCardWrap.setOnLongClickListener {
-                onItemClickListener?.let {
-                    it(Action.LongClick, groupData)
-                }
-                true
-            }
+        private fun setSwipeInfo(groupData: GroupData) {
+            binding.actionTextLeft.setArchiveText(groupData)
+            binding.actionTextRight.setArchiveText(groupData)
+            binding.actionImageRight.setListSwipeArchiveIcon(groupData)
+            binding.actionImageLeft.setListSwipeArchiveIcon(groupData)
+        }
 
+        private fun setProgressInfo(groupData: GroupData) {
             binding.progressBar.progress = groupData.progress
             binding.progressBar.setProgressColor(groupData.progress)
             binding.tvGroupProgress.setGroupProgressText(groupData)
@@ -58,24 +68,23 @@ class ArchiveListAdapter : ListAdapter<GroupData, ArchiveListAdapter.ViewHolder>
                     binding.tvNotePr.setGroupCompletedText(groupData)
                 }
             }
+        }
 
-            binding.actionTextLeft.setArchiveText(groupData)
-            binding.actionTextRight.setArchiveText(groupData)
-            binding.actionImageRight.setListSwipeArchiveIcon(groupData)
-            binding.actionImageLeft.setListSwipeArchiveIcon(groupData)
-
-            if (groupData.urgentItems > 0) {
-                binding.cardUrgentIndicator.visible()
-                binding.cardUrgentIndicatorText.text = groupData.urgentItems.toString()
-            } else {
-                binding.cardUrgentIndicator.gone()
+        private fun setClickListeners(
+            onItemClickListener: ((Action, GroupData) -> Unit)?,
+            groupData: GroupData,
+        ) {
+            binding.homeCardWrap.setOnClickListener {
+                onItemClickListener?.let { it(Action.Click, groupData) }
             }
 
-            if (groupData.todayItems > 0) {
-                binding.cardTodayIndicator.visible()
-                binding.cardTodayIndicatorText.text = groupData.todayItems.toString()
-            } else {
-                binding.cardTodayIndicator.gone()
+            binding.ivGroupMenu.setOnClickListener {
+                onItemClickListener?.let { it(Action.MenuClick, groupData) }
+            }
+
+            binding.homeCardWrap.setOnLongClickListener {
+                onItemClickListener?.let { it(Action.LongClick, groupData) }
+                true
             }
         }
 

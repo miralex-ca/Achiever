@@ -10,48 +10,40 @@ import com.muralex.achiever.databinding.ListitemPinneditemsBinding
 import com.muralex.achiever.presentation.utils.Constants.Action
 import com.muralex.achiever.presentation.utils.setPinnedGroupImageSource
 import com.muralex.achiever.presentation.utils.setPinnedIcon
-import com.muralex.achiever.presentation.utils.setTexNoLine
 import com.muralex.achiever.presentation.utils.setTodoStatusImage
 
-class PinnedItemsListAdapter : ListAdapter<PinnedItem, PinnedItemsListAdapter.ViewHolder>(HomeListDiffCallBack()) {
+class PinnedItemsListAdapter : ListAdapter<PinnedItem, PinnedItemsListAdapter.ViewHolder>(PinnedListDiffCallBack()) {
 
-    class ViewHolder (private val binding: ListitemPinneditemsBinding) : RecyclerView.ViewHolder (binding.root) {
-
+    class ViewHolder (val binding: ListitemPinneditemsBinding) : RecyclerView.ViewHolder (binding.root)  {
         val viewForeground = binding.viewForeground
         val swipeArchiveLeft = binding.bgArchiveLeft
         val swipeArchiveRight = binding.bgArchiveRight
 
         fun bind(dataItem: PinnedItem, onItemClickListener: ((Action, PinnedItem) -> Unit)?) {
-            binding.tvNoteTitle.setTexNoLine(dataItem.title)
-
-            binding.homeCardWrap.setOnClickListener {
-                onItemClickListener?.let {
-                        it (Action.Click, dataItem)
-                }
-            }
-
-            binding.ivItemImage.setOnClickListener {
-                onItemClickListener?.let {
-                    it (Action.TodoStatus, dataItem)
-                }
-            }
-
+            binding.tvNoteTitle.text = dataItem.title
+            binding.tvGroupName.text = dataItem.groupName
             binding.ivGroupImage.setPinnedGroupImageSource(dataItem.groupImage)
             binding.ivItemImage.setTodoStatusImage(dataItem.displayStatus)
             binding.ivPinned.setPinnedIcon(dataItem.data)
+            setClickEvents(onItemClickListener, dataItem)
+        }
 
-            binding.tvGroupName.setTexNoLine(dataItem.groupName)
-
-            binding.homeCardWrap.setOnLongClickListener {
-                onItemClickListener?.let {
-                    it (Action.LongClick, dataItem)
-                }
-                true
-            }
-
-            binding.llSection.setOnClickListener {
-                onItemClickListener?.let {
-                    it (Action.OpenGroup, dataItem)
+        private fun setClickEvents(
+            onItemClickListener: ((Action, PinnedItem) -> Unit)?,
+            dataItem: PinnedItem,
+        ) {
+            onItemClickListener?.let {clickListener ->
+                binding.apply {
+                    itemCardWrap.setOnClickListener {
+                        clickListener(Action.Click, dataItem)
+                    }
+                    itemCardWrap.setOnLongClickListener {
+                        clickListener(Action.LongClick, dataItem)
+                        true
+                    }
+                    llSection.setOnClickListener {
+                        clickListener(Action.OpenGroup, dataItem)
+                    }
                 }
             }
         }
@@ -81,7 +73,7 @@ class PinnedItemsListAdapter : ListAdapter<PinnedItem, PinnedItemsListAdapter.Vi
     }
 }
 
-class HomeListDiffCallBack : DiffUtil.ItemCallback<PinnedItem>() {
+class PinnedListDiffCallBack : DiffUtil.ItemCallback<PinnedItem>() {
     override fun areItemsTheSame(oldItem: PinnedItem, newItem: PinnedItem): Boolean {
        return oldItem.id == newItem.id
     }
